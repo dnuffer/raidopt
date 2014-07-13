@@ -1,0 +1,38 @@
+disks,raid,strip size,read policy,write policy,io policy,fs,os
+8,0,64 KB,normal,write-back,cached,ext4,ubuntu14.04
+4x830,5,128 KB,ahead,write-thru,direct,xfs,ubuntu14.04
+4x840 evo,6,256 KB,ahead,write-back,direct,btrfs,centos6.5
+4x840 evo,10,512 KB,normal,write-thru,cached,btrfs,debian7.5
+4x830,50,1024 KB,normal,write-back,cached,xfs,opensuse13.1
+8,60,1024 KB,ahead,write-thru,direct,ext4,fedora20
+8,50,512 KB,ahead,write-thru,direct,ext4,opensuse13.1
+4x830,10,256 KB,normal,write-back,direct,ext4,debian7.5
+4x840 evo,60,64 KB,ahead,write-back,cached,xfs,fedora20
+8,5,256 KB,normal,write-thru,cached,btrfs,centos6.5
+4x840 evo,0,128 KB,ahead,write-thru,cached,btrfs,opensuse13.1
+4x830,6,64 KB,normal,write-thru,cached,btrfs,fedora20
+4x840 evo,5,1024 KB,ahead,write-back,cached,ext4,debian7.5
+8,10,128 KB,ahead,write-back,cached,xfs,debian7.5
+4x830,60,512 KB,normal,write-back,cached,btrfs,ubuntu14.04
+4x830,0,256 KB,ahead,write-back,direct,xfs,centos6.5
+4x840 evo,50,128 KB,normal,write-back,cached,ext4,centos6.5
+4x840 evo,6,512 KB,ahead,write-back,cached,xfs,ubuntu14.04
+8,6,1024 KB,ahead,write-back,cached,ext4,ubuntu14.04
+4x840 evo,50,64 KB,ahead,write-back,direct,btrfs,debian7.5
+4x840 evo,10,64 KB,ahead,write-back,cached,ext4,centos6.5
+4x840 evo,60,256 KB,ahead,write-back,cached,ext4,opensuse13.1
+4x840 evo,10,1024 KB,ahead,write-back,cached,btrfs,centos6.5
+4x840 evo,0,512 KB,ahead,write-back,cached,ext4,fedora20
+4x840 evo,5,512 KB,ahead,write-back,cached,ext4,centos6.5
+4x840 evo,10,256 KB,ahead,write-back,cached,ext4,ubuntu14.04
+4x840 evo,5,64 KB,ahead,write-back,cached,ext4,opensuse13.1
+4x840 evo,60,128 KB,ahead,write-back,cached,ext4,centos6.5
+4x840 evo,50,256 KB,ahead,write-back,cached,ext4,fedora20
+4x840 evo,6,128 KB,ahead,write-back,cached,ext4,opensuse13.1
+4x840 evo,10,128 KB,ahead,write-back,cached,ext4,fedora20
+4x840 evo,0,1024 KB,ahead,write-back,cached,ext4,debian7.5
+4x840 evo,10,128 KB,ahead,write-back,cached,ext4,opensuse13.1
+4x840 evo,6,128 KB,ahead,write-back,cached,ext4,debian7.5
+4x840 evo,50,128 KB,ahead,write-back,cached,ext4,ubuntu14.04
+4x840 evo,60,128 KB,ahead,write-back,cached,ext4,debian7.5
+4x840 evo,5,128 KB,ahead,write-back,cached,ext4,fedora20

@@ -1,0 +1,91 @@
+https://wiki.archlinux.org/index.php/SSD_Memory_Cell_Clearing
+
+To reset an SSD's memory:
+hdparm --user-master u --security-set-pass p /dev/sdX
+hdparm --user-master u --security-erase p /dev/sdX
+
+LSI MegaRAID and ESX
+http://blog.mywarwithentropy.com/2013/05/esx-and-lsi-megaraid.html - instructions on installing. 
+http://212.37.144.196/jesperramsgaard.dk/?p=375
+http://www.lsi.com/products/raid-controllers/pages/megaraid-sas-9361-8i.aspx#tab/tab4 - Download page
+
+Reference on how to create a raid:
+http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/MegaRAID_SAS_SW_UG_51530-00_RevJ.pdf
+http://www.lsi.com/downloads/Public/Storage%20Products/Internal%20RAID/embedded_mr_sw_ug.pdf
+
+Blog post in progress:
+https://www.blogger.com/blogger.g?blogID=2712753944187198265#editor/target=post;postID=4437945690316932761
+
+Code to generate the experiment list is in AllPairs-*/examples/raid.py. To run it execute PYTHONPATH=.. python raid.py
+
+TODO:
+- run_experiment_on_template():
+		clone vm template to vm to run experiment
+		start vm
+		wait for tools
+		execute experiment
+		wait for experiment to complete
+		save results of experiment
+		delete vm
+
+- Test all VM templates can run experiment w/out problems
+	ensure that array is in RAID0
+	for each template:
+		run_experiment_on_template()
+
+- Run all-pairs experiments:
+    load list of all experiments
+	 load list of already run experiments
+	 difference to find experiments to run
+	 for each experiment to run (randomly ordered):
+	 	do cleanup if necessary?
+		create RAID array w/experiment params
+		configure vc/esx:
+			set drive to be ssd
+			create datastore
+		run_experiment_on_template()
+		delete datastore
+
+- predict(experiments):
+	format data in a form suitable for training models
+	train RandomForest models on the data
+	predict the performance of all permutations of the experiments
+	sort the experiments by performance rank
+
+- procedure to predict optimal settings of a set of experiments:
+	predictions = predict(experiments)
+	return the best experiment based on predictions
+
+- learning process:
+	// first go for all-pairs coverage so the model has something to work with
+	run_all_pairs_experiments()
+
+	// next go for greedy
+	while True:
+		best = predict_optimal_experiment()
+		if best has already been run:
+			break
+		run_experiment(best)
+	
+	// next go for a bit of random what's left. Stop if we haven't improved for a while
+	num_runs_without_improvement = 0
+	while num_runs_without_improvement < 10:
+		predictions_of_unrun = predict(experiments not yet run)
+		sort experiments_not_yet_run by predictions_of_unrun
+		// use rgamma to weight toward the best expected result, or runif to weight uniformly for any of them
+		experiment_to_run = experiments_not_yet_run[floor(min(rgamma(1, shape=1, scale=log(nrow(experiments_not_yet_run))), nrow(experiments_not_yet_run)))]
+		run_experiment(experiment_to_run)
+		if last_experiment is the new best:
+			num_runs_without_improvement = 0
+		else:
+			num_runs_without_improvement += 1
+
+
+
+
+DONE:
+- Find a MegaCLI that works or use WBEM to control it.
+  - Try installing Latest MegaRAID Firmware/VMware ESX5.5MN:    6.603.55.00.1vmw_MR_VMware5_Driver_esx55.tgz
+    - See if MegaCLI works or if Storage Manager works - NO
+    - See if StorCLI works: 1.09.13_StorCLI.zip
+	 X Solution is to disable pre-existing driver (thanks to lsi support)
