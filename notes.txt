@@ -22,11 +22,21 @@ TODO:
 - run_experiment_on_template():
 		clone vm template to vm to run experiment
 		start vm
-		wait for tools
+		wait for vm tools to start on boot
 		execute experiment
 		wait for experiment to complete
 		save results of experiment
 		delete vm
+
+- run_experiment(experiment):
+	 	do cleanup if necessary?
+		create RAID array w/experiment params
+		configure vc/esx:
+			set drive to be ssd
+			create datastore
+		run_experiment_on_template()
+		delete datastore
+
 
 - Test all VM templates can run experiment w/out problems
 	ensure that array is in RAID0
@@ -38,13 +48,7 @@ TODO:
 	 load list of already run experiments
 	 difference to find experiments to run
 	 for each experiment to run (randomly ordered):
-	 	do cleanup if necessary?
-		create RAID array w/experiment params
-		configure vc/esx:
-			set drive to be ssd
-			create datastore
-		run_experiment_on_template()
-		delete datastore
+	 	run_experiment(experiment)
 
 - predict(experiments):
 	format data in a form suitable for training models
@@ -52,7 +56,8 @@ TODO:
 	predict the performance of all permutations of the experiments
 	sort the experiments by performance rank
 
-- procedure to predict optimal settings of a set of experiments:
+- predict_optimal_experiment():
+	// procedure to predict optimal settings of a set of experiments
 	predictions = predict(experiments)
 	return the best experiment based on predictions
 
