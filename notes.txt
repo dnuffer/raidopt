@@ -19,6 +19,19 @@ https://www.blogger.com/blogger.g?blogID=2712753944187198265#editor/target=post;
 Code to generate the experiment list is in AllPairs-*/examples/raid.py. To run it execute PYTHONPATH=.. python raid.py
 
 TODO:
+change password of ubuntu templates to 'password'
+disable X on all templates
+create benchmark wrapper and place on all Vms (/home/dan/benchmark.sh):
+/home/dan/phoronix-test-suite/phoronix-test-suite benchmark pts/disk <<EOS
+Y
+$EXPERIMENT_ID
+$EXPERIMENT_ID
+
+n
+n
+EOS
+
+
 - run_experiment_on_template():
 		clone vm template to vm to run experiment
 		start vm
