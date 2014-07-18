@@ -13,33 +13,31 @@ Reference on how to create a raid:
 http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/MegaRAID_SAS_SW_UG_51530-00_RevJ.pdf
 http://www.lsi.com/downloads/Public/Storage%20Products/Internal%20RAID/embedded_mr_sw_ug.pdf
 
+How to mark an array as SSD device in esx:
+http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2013188
+
 Blog post in progress:
 https://www.blogger.com/blogger.g?blogID=2712753944187198265#editor/target=post;postID=4437945690316932761
 
 Code to generate the experiment list is in AllPairs-*/examples/raid.py. To run it execute PYTHONPATH=.. python raid.py
 
+Do two different and then combine and see if the same outcome results.
+1. Just RAID controller parameters
+2. Use best RAID and vary OS parameters
+3. Do both at the same time
+
 TODO:
-change password of ubuntu templates to 'password'
 disable X on all templates
 create benchmark wrapper and place on all Vms (/home/dan/benchmark.sh):
-/home/dan/phoronix-test-suite/phoronix-test-suite benchmark pts/disk <<EOS
+/home/dan/phoronix-test-suite/phoronix-test-suite benchmark ${1:-pts/disk} <<EOS
 Y
-$EXPERIMENT_ID
-$EXPERIMENT_ID
+1
+1
 
 n
 n
 EOS
 
-
-- run_experiment_on_template():
-		clone vm template to vm to run experiment
-		start vm
-		wait for vm tools to start on boot
-		execute experiment
-		wait for experiment to complete
-		save results of experiment
-		delete vm
 
 - run_experiment(experiment):
 	 	do cleanup if necessary?
@@ -107,3 +105,14 @@ DONE:
     - See if MegaCLI works or if Storage Manager works - NO
     - See if StorCLI works: 1.09.13_StorCLI.zip
 	 X Solution is to disable pre-existing driver (thanks to lsi support)
+change password of ubuntu templates to 'password'
+
+- run_experiment_on_template():
+		clone vm template to vm to run experiment
+		start vm
+		wait for vm tools to start on boot
+		execute experiment
+		wait for experiment to complete
+		save results of experiment
+		delete vm
+
