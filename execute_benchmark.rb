@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'rbvmomi'
-require 'vm_utils'
+require './vm_utils'
 require 'highline/import'
 
 raise "Invalid args: template password" unless ARGV.size == 1
@@ -11,7 +11,7 @@ password = 'temppassword'
 $vim = VIM.connect host: 'vc', user: 'root', password: password, insecure: true
 dc = $vim.serviceInstance.find_datacenter("dc1") or fail "datacenter not found"
 
-use_existing_vm = true
+use_existing_vm = false
 
 # First look if the target vm already exists. if so, shut it off and delete it.
 target_vm = dc.find_vm("disktest-vm")
@@ -28,7 +28,8 @@ if !target_vm
   template_vm = dc.find_vm(template) or fail "VM template #{template} not found"
   puts "Found template"
 
-  target_datastore = dc.find_datastore("local-black-ssd-raid0")
+  target_datastore = dc.find_datastore("local-black-ssd-raid-test")
+  fail "Couldn't find target datastore" unless target_datastore
   puts "Found target datastore"
 
   relocateSpec = VIM.VirtualMachineRelocateSpec(:diskMoveType => :moveAllDiskBackingsAndDisallowSharing)
@@ -77,14 +78,14 @@ puts "VMware tools available"
 
 puts "running phoronix test suite"
 twelve_hours_in_secs = 12 * 60 * 60
-run_program(vm, guestauth, "/home/dan/benchmark.sh pts/aio-stress", "", twelve_hours_in_secs)
+run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite; bash /home/dan/benchmark.sh pts/aio-stress'", twelve_hours_in_secs)
 puts "phoronix test suite complete"
 
 
 
 
 puts "copying back results"
-copy_file_from_vm(vm, guestauth, "/home/dan/.phoronix-test-suite/????", "guest.out")
+copy_file_from_vm(vm, guestauth, "/home/dan/.phoronix-test-suite/test-results/1/test-1.xml", "benchmark-results.xml")
 puts "finished copying back results"
 
 puts "Powering vm off"
