@@ -48,12 +48,6 @@ EOS
 		run_experiment_on_template()
 		delete datastore
 
-
-- Test all VM templates can run experiment w/out problems
-	ensure that array is in RAID0
-	for each template:
-		run_experiment_on_template()
-
 - Run all-pairs experiments:
     load list of all experiments
 	 load list of already run experiments
@@ -115,4 +109,9 @@ change password of ubuntu templates to 'password'
 		wait for experiment to complete
 		save results of experiment
 		delete vm
+
+- Test all VM templates can run experiment w/out problems
+	ensure that array is in RAID0
+	for each template:
+		run_experiment_on_template()
 

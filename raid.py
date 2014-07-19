@@ -17,11 +17,27 @@ parameters = [
     , [ "normal", "ahead" ]
     , [ "write-back", "write-thru" ]
     , [ "cached", "direct" ]
-    #, [ "ext4", "xfs", "btrfs" ]
-    #, [ "ubuntu14.04", "centos7", "debian7.5", "opensuse13.1", "fedora20" ]
-    #, [ "1GB", "0GB", "128MB", "4GB" ]
-    #, [ "16GB", "32GB", "64GB" ]
-    #, [ "1GB", "2GB", "4GB" ]
+    #, [ "ext4", "xfs", "btrfs" ] # fs
+    #, [ "ubuntu14.04", "centos7", "debian7.5", "opensuse13.1", "fedora20" ] # OS
+    #, [ "1GB", "0GB", "128MB", "4GB" ] # swap
+    #, [ "16GB", "32GB", "64GB" ] # HD size
+    #, [ "1GB", "2GB", "4GB" ] # RAM
+    #, [ "deadline", "noop", "cfq" ] # disk scheduler - https://wiki.archlinux.org/index.php/Solid_State_Drives#I.2FO_Scheduler
+    # http://erikugel.wordpress.com/2011/04/14/the-quest-for-the-fastest-linux-filesystem/
+    # fs block size
+    # fs stride (ext4), sunit/swidth (xfs)
+    # journal mode
+    # directory indexing
+    # barrier=0
+    # data=writeback/data=journal
+    # partition alignment
+    # noatime/nodiratime/relatime
+    # nobh
+    # notail
+    # vm_dirty_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
+    # vm_dirty_background_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
+    # nodealloc - http://www.phoronix.com/scan.php?page=article&item=ext4_linux35_tuning&num=1
+
 ]
 
 def is_valid_combination( row ):
