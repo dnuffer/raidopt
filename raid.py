@@ -12,7 +12,7 @@ Demo of the basic functionality - just getting pairwise/n-wise combinations
 
 parameters = [ 
     [ "8", "4x830", "4x840" ]
-    , [ "0", "5", "6", "00", "10", "50", "60" ]
+    , [ "raid0", "raid5", "raid6", "raid00", "raid10", "raid50", "raid60" ]
     , [ "64", "128", "256", "512", "1024" ]
     , [ "normal", "ahead" ]
     , [ "write-back", "write-thru" ]

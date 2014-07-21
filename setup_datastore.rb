@@ -39,6 +39,8 @@ def create_array(host, disks, raid_level, strip_size, read_policy, write_policy,
     cache_policy = "wt"
   end
 
+  # comes in like "raid10". extract the digits
+  raid_level = raid_level[/\d+/]
   if raid_level == "00" || raid_level == "10" || raid_level == "50" || raid_level == "60"
     pdperarray = "pdperarray=#{num_drives/2}"
   else
