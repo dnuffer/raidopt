@@ -91,11 +91,12 @@ if raid_ds
   puts "found datastore #{raid_ds.name}"
   puts "shutting down and deleting vms on #{raid_ds.name}"
   raid_ds.vm.each {|vm|
-    puts "Found #{vm.name}, powering off"
-    vm.PowerOffVM_Task.wait_for_completion rescue nil
-    puts "Deleting #{vm.name}"
-    vm.Destroy_Task.wait_for_completion
-    puts "#{vm.name} deleted"
+    vm_name = vm.name
+    puts "Found #{vm_name}, powering off"
+    vm.PowerOffVM_Task.wait_for_completion rescue puts "Failed to power off #{vm_name}. Ignoring"
+    puts "Deleting #{vm_name}"
+    vm.Destroy_Task.wait_for_completion rescue puts "Failed to destroy #{vm_name}. Ignoring"
+    puts "#{vm_name} deleted"
   }
 
   puts "removing datastore"
