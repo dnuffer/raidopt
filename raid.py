@@ -53,7 +53,7 @@ def is_valid_combination( row ):
   if n>1:
     # raid 50 and 60 are not compatible with 4 drives (4x830, 4x840)
     if row[0] == "4x830" or row[0] == "4x840":
-      if row[1] == "50" or row[1] == "60":
+      if row[1] == "raid50" or row[1] == "raid60":
         return False
   return True
 
@@ -63,7 +63,7 @@ print "PAIRWISE:"
 for i, v in enumerate(pairwise):
     print "%i:\t%s" % (i + 1, str(v))
 
-pairwise = all_pairs( parameters )
+pairwise = all_pairs( parameters, filter_func = is_valid_combination )
 with open("experiments.csv", "w") as experiments_csv:
   experiments_csv.write("disks,raid,strip size,read policy,write policy,io policy\n")
   #experiments_csv.write("disks,raid,strip size,read policy,write policy,io policy,fs,os,swap,hd,ram\n")
