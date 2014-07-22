@@ -13,7 +13,10 @@ run_experiment = function(params) {
       system(paste('echo ', paste(c(params, "bm2", value ^ 2), collapse=","), '>>benchmark-results-all.csv'))
     } else {
       print(paste("rvm-exec 2.1@raidopt ruby ./run_experiment.rb", paste(lapply(params, as.character), collapse=" ")))
-      system(paste("rvm-exec 2.1@raidopt ruby ./run_experiment.rb", paste(lapply(params, as.character), collapse=" ")))
+      status = system(paste("rvm-exec 2.1@raidopt ruby ./run_experiment.rb", paste(lapply(params, as.character), collapse=" ")))
+      if (status != 0) {
+        stop("failed to run experiment")
+      }
     }
 }
 
@@ -84,7 +87,7 @@ predict_benchmark_ranking = function(combinations_to_predict) {
   predictors=list()
   for (benchmark in benchmarks) {
     train_data = subset(benchmark_results[benchmark_results$benchmark == benchmark,], select=-c(benchmark))
-    predictors[[benchmark]] = train(value~., data=train_data, model="avNNet", trControl=trainControl(method="cv"), tuneLength=3)
+    predictors[[benchmark]] = train(value~., data=train_data, model="avNNet", trControl=trainControl(method="repeatedcv"), tuneLength=15)
     #predictors[[benchmark]] = train(value~., data=train_data, model="rf", trControl=trainControl(method="cv"), tuneLength=3)
     #print(predictors[[benchmark]])
 
