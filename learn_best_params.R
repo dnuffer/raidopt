@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-testing=T
+testing=F
 
 run_experiment = function(params) {
     params = lapply(params, as.character)
