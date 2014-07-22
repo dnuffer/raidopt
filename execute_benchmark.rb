@@ -78,7 +78,7 @@ puts "VMware tools available"
 
 puts "running phoronix test suite"
 twelve_hours_in_secs = 12 * 60 * 60
-run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite; bash /home/dan/benchmark.sh pts/aio-stress'", twelve_hours_in_secs)
+run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite; bash /home/dan/benchmark.sh pts/disk'", twelve_hours_in_secs)
 puts "phoronix test suite complete"
 
 
