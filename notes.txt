@@ -27,6 +27,31 @@ Do two different and then combine and see if the same outcome results.
 3. Do both at the same time
 
 TODO:
+
+
+
+DONE:
+- Find a MegaCLI that works or use WBEM to control it.
+  - Try installing Latest MegaRAID Firmware/VMware ESX5.5MN:    6.603.55.00.1vmw_MR_VMware5_Driver_esx55.tgz
+    - See if MegaCLI works or if Storage Manager works - NO
+    - See if StorCLI works: 1.09.13_StorCLI.zip
+	 X Solution is to disable pre-existing driver (thanks to lsi support)
+change password of ubuntu templates to 'password'
+
+- run_experiment_on_template():
+		clone vm template to vm to run experiment
+		start vm
+		wait for vm tools to start on boot
+		execute experiment
+		wait for experiment to complete
+		save results of experiment
+		delete vm
+
+- Test all VM templates can run experiment w/out problems
+	ensure that array is in RAID0
+	for each template:
+		run_experiment_on_template()
+
 disable X on all templates
 create benchmark wrapper and place on all Vms (/home/dan/benchmark.sh):
 /home/dan/phoronix-test-suite/phoronix-test-suite benchmark ${1:-pts/disk} <<EOS
@@ -89,29 +114,4 @@ EOS
 			num_runs_without_improvement = 0
 		else:
 			num_runs_without_improvement += 1
-
-
-
-
-DONE:
-- Find a MegaCLI that works or use WBEM to control it.
-  - Try installing Latest MegaRAID Firmware/VMware ESX5.5MN:    6.603.55.00.1vmw_MR_VMware5_Driver_esx55.tgz
-    - See if MegaCLI works or if Storage Manager works - NO
-    - See if StorCLI works: 1.09.13_StorCLI.zip
-	 X Solution is to disable pre-existing driver (thanks to lsi support)
-change password of ubuntu templates to 'password'
-
-- run_experiment_on_template():
-		clone vm template to vm to run experiment
-		start vm
-		wait for vm tools to start on boot
-		execute experiment
-		wait for experiment to complete
-		save results of experiment
-		delete vm
-
-- Test all VM templates can run experiment w/out problems
-	ensure that array is in RAID0
-	for each template:
-		run_experiment_on_template()
 
