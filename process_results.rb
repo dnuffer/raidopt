@@ -12,7 +12,7 @@ require 'pp'
 puts data.pretty_inspect
 
 data["Result"].each do |result|
-  benchmark_title = "#{result["Title"].first}"
+  benchmark_title = "#{result["Title"].first} #{result["Arguments"].first}"
   fname = "benchmark-results-all.csv"
   unless File.exist? fname
     open(fname, "a") { |out_csv|
