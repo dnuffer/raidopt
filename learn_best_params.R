@@ -216,6 +216,8 @@ while (T) {
 }
 
 print("Finished greedy search. Found a predicted best experiment that has already been done.")
+print("The best configuration found")
+print(best_benchmark())
 
 #return records from x.1 which are not in x.2
 #http://stackoverflow.com/questions/7728462/identify-records-in-data-frame-a-not-contained-in-data-frame-b
@@ -235,7 +237,9 @@ print("Starting random search, weighted toward best predictions.")
 num_runs_without_improvement = 0
 prev_best = best_benchmark()
 while (num_runs_without_improvement < 10) {
-  unexecuted_experiments = get_unexecuted_experiments()
+  # For now, choose randomly from all experiments, not just unexecuted ones because there is some randomness and want to re-run best ones to get more data.
+  unexecuted_experiments = get_all_experiments()
+  #unexecuted_experiments = get_unexecuted_experiments()
   predictions_of_unexecuted_experiments = predict_benchmark_ranking(unexecuted_experiments)
   unexecuted_experiments = unexecuted_experiments[order(predictions_of_unexecuted_experiments$combined_score),]
   experiment_idx = round(min(rgamma(1, shape=1, scale=log(nrow(unexecuted_experiments))) + 0.5, nrow(unexecuted_experiments)))
@@ -245,18 +249,37 @@ while (num_runs_without_improvement < 10) {
   print("random experiment_to_run")
   print(experiment_to_run)
   run_experiment(experiment_to_run)
-  num_runs_without_improvement = num_runs_without_improvement + 1
-  # TODO: fix best_benchmark, call it, print out the result. See if we have improved
   print("current best benchmark")
   best = best_benchmark()
   print(best)
-  if (isTRUE(all.equal(best, prev_best))) {
+  if (!isTRUE(all.equal(best, prev_best))) {
+    print("Found new best")
     num_runs_without_improvement = 0
     prev_best = best
   } else {
     num_runs_without_improvement = num_runs_without_improvement + 1
+    print("increased num_runs_without_improvement to:")
+    print(num_runs_without_improvement)
   }
 }
+print("Finished random search")
+print("The best configuration found")
+print(best_benchmark())
+
+print("Beginning second greedy search for experiments")
+while (T) {
+  best = predict_optimal()
+  print("Predicted that the best solution is")
+  print(best)
+  if (experiment_has_been_run(best)) {
+    print("experiment has already been run, terminating greedy search")
+    break
+  }
+  print("running experiment for predicted best")
+  run_experiment(best)
+}
+
+print("Finished second greedy search. Found a predicted best experiment that has already been done.")
 
 print("Done")
 print("The best configuration found")
