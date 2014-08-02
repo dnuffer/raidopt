@@ -3038,3 +3038,1382 @@ disks,raid,strip size,read policy,write policy,io policy,benchmark,value
 8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26384.91
 8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26663.37
 8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26634.3
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1011.84
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,390.46
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,596.78
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1007.56
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,971.29
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1244.55
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11243167201710381
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11712770185771362
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11483222254306334
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,802.5
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,840.6
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,844.1
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2372.41
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2332.77
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2336.45
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2166.05
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2033.94
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2071.5
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1925.27
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1997.09
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1928.92
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,583.01
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,599.867
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,582.345
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1297.44140625
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1324.8466796875
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1356.3505859375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1387.162109375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1358.009765625
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1382.5634765625
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,572.292
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,536.375
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,562.278
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,210.015
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,215.662
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,213.6
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1496.37
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1499.66
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1493.64
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,266.83
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,268.6
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,278.42
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,208.04
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,201.89
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,205.31
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11348533692542176
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.10808652552235522
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.10165169856547249
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11392088037672597
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12317477986233034
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12469620880540588
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12411969882469456
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12417803518460092
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4098
+4x840,raid0,512,ahead,write-back,direct,PostMark {},3968
+4x840,raid0,512,ahead,write-back,direct,PostMark {},3968
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07558255074241535
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07662464162673313
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07633189271119846
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26587.63
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26793.59
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26649.79
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1025.92
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1006.82
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,976.52
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.12775340567294838
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11859325120983007
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11678337196594751
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11935076976520664
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.12003041007875628
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,749.5
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,615.2
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,603.4
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,635.1
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,625.2
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,622.4
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2345.34
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2338.94
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2333.34
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2154.82
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2072.26
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2055.58
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1986.77
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,2004.78
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1932.2
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,576.234
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,595.022
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,579.367
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1341.55859375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1350.7841796875
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1359.521484375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1377.9912109375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1399.2275390625
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1412.6630859375
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,546.047
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,544.544
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,552.452
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,227.459
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,198.999
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,204.586
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,226.4
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,213.185
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,171.284
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1474.01
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1425.39
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1490.49
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,277.38
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,261.78
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,262.93
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,218.94
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,206.13
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,204.08
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.10291216641570644
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12402734743775595
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11323683108449158
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11307506154447308
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12574581214199784
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1127638665373711
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12526237788699338
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12536385461907446
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07556572401985229
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.0765196482431087
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07699895045590752
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26278.23
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26028.01
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26284.67
+4x830,raid0,128,ahead,write-back,direct,AIO-Stress -o 2,894.39
+4x830,raid0,128,ahead,write-back,direct,AIO-Stress -o 2,937.56
+4x830,raid0,128,ahead,write-back,direct,AIO-Stress -o 2,934.61
+4x830,raid0,128,ahead,write-back,direct,SQLite {},0.1116385298872797
+4x830,raid0,128,ahead,write-back,direct,SQLite {},0.115403303938164
+4x830,raid0,128,ahead,write-back,direct,SQLite {},0.11567855045700101
+4x830,raid0,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,732.7
+4x830,raid0,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,646.1
+4x830,raid0,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,608.2
+4x830,raid0,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,622.7
+4x830,raid0,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,629.4
+4x830,raid0,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,607.5
+4x830,raid0,128,ahead,write-back,direct,Dbench 12,2340.19
+4x830,raid0,128,ahead,write-back,direct,Dbench 12,2343
+4x830,raid0,128,ahead,write-back,direct,Dbench 12,2354.31
+4x830,raid0,128,ahead,write-back,direct,Dbench 48,2138.14
+4x830,raid0,128,ahead,write-back,direct,Dbench 48,2061.68
+4x830,raid0,128,ahead,write-back,direct,Dbench 48,2046.64
+4x830,raid0,128,ahead,write-back,direct,Dbench 128,1985.05
+4x830,raid0,128,ahead,write-back,direct,Dbench 128,2025.57
+4x830,raid0,128,ahead,write-back,direct,Dbench 128,1945.82
+4x830,raid0,128,ahead,write-back,direct,Dbench 1,580.203
+4x830,raid0,128,ahead,write-back,direct,Dbench 1,598.809
+4x830,raid0,128,ahead,write-back,direct,Dbench 1,578.776
+4x830,raid0,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1258.638671875
+4x830,raid0,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1265.8642578125
+4x830,raid0,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1258.36328125
+4x830,raid0,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1389.439453125
+4x830,raid0,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1351.1923828125
+4x830,raid0,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1384.3662109375
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,502.947
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,511.484
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,528.15
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,197.88
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,209.821
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.077
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,243.694
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,239.79
+4x830,raid0,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,239.033
+4x830,raid0,128,ahead,write-back,direct,Compile Bench COMPILE,1421.09
+4x830,raid0,128,ahead,write-back,direct,Compile Bench COMPILE,1516.26
+4x830,raid0,128,ahead,write-back,direct,Compile Bench COMPILE,1225.35
+4x830,raid0,128,ahead,write-back,direct,Compile Bench COMPILE,1484.85
+4x830,raid0,128,ahead,write-back,direct,Compile Bench COMPILE,1497.69
+4x830,raid0,128,ahead,write-back,direct,Compile Bench COMPILE,1493.08
+4x830,raid0,128,ahead,write-back,direct,Compile Bench INITIAL_CREATE,270.96
+4x830,raid0,128,ahead,write-back,direct,Compile Bench INITIAL_CREATE,275.54
+4x830,raid0,128,ahead,write-back,direct,Compile Bench INITIAL_CREATE,272.84
+4x830,raid0,128,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,214.87
+4x830,raid0,128,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,191.45
+4x830,raid0,128,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,197.56
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12591050729280903
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11185090443062277
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11498495448403465
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12361272529357756
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11303330761746992
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12495912458445345
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12517147159168698
+4x830,raid0,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12656031462412143
+4x830,raid0,128,ahead,write-back,direct,PostMark {},3571
+4x830,raid0,128,ahead,write-back,direct,PostMark {},3205
+4x830,raid0,128,ahead,write-back,direct,PostMark {},3906
+4x830,raid0,128,ahead,write-back,direct,PostMark {},3676
+4x830,raid0,128,ahead,write-back,direct,PostMark {},3906
+4x830,raid0,128,ahead,write-back,direct,PostMark {},3787
+4x830,raid0,128,ahead,write-back,direct,Gzip Compression {},0.07580686209141467
+4x830,raid0,128,ahead,write-back,direct,Gzip Compression {},0.07650667460498019
+4x830,raid0,128,ahead,write-back,direct,Gzip Compression {},0.07618842790016411
+4x830,raid0,128,ahead,write-back,direct,Apache Benchmark {},26412.98
+4x830,raid0,128,ahead,write-back,direct,Apache Benchmark {},26670.41
+4x830,raid0,128,ahead,write-back,direct,Apache Benchmark {},23494.12
+4x830,raid0,128,ahead,write-back,direct,Apache Benchmark {},21516.29
+4x830,raid0,128,ahead,write-back,direct,Apache Benchmark {},20626.73
+4x830,raid0,128,ahead,write-back,direct,Apache Benchmark {},20938.54
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1095.71
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1124.5
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1090.04
+8,raid00,256,ahead,write-back,direct,SQLite {},0.13386591979535897
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11063409367965817
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11468393454411714
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11372878036865725
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11785710953937209
+8,raid00,256,ahead,write-back,direct,SQLite {},0.1124537857555132
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,731.6
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,610.7
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,629.1
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,631.1
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,584.6
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,630.8
+8,raid00,256,ahead,write-back,direct,Dbench 12,2309.43
+8,raid00,256,ahead,write-back,direct,Dbench 12,2321.75
+8,raid00,256,ahead,write-back,direct,Dbench 12,2351.4
+8,raid00,256,ahead,write-back,direct,Dbench 48,2146.81
+8,raid00,256,ahead,write-back,direct,Dbench 48,2066.22
+8,raid00,256,ahead,write-back,direct,Dbench 48,2066.03
+8,raid00,256,ahead,write-back,direct,Dbench 128,2003.05
+8,raid00,256,ahead,write-back,direct,Dbench 128,2029.01
+8,raid00,256,ahead,write-back,direct,Dbench 128,1956.7
+8,raid00,256,ahead,write-back,direct,Dbench 1,577.48
+8,raid00,256,ahead,write-back,direct,Dbench 1,596.346
+8,raid00,256,ahead,write-back,direct,Dbench 1,574.25
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1330.69140625
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1317.126953125
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1330.8330078125
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1375.947265625
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1401.9599609375
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1390.2333984375
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,491.866
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,537.14
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,526.833
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,534.933
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,501.466
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,505.999
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,260.285
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,256.431
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,260.152
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1477.44
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1474.42
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1483.48
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,282.22
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,272.49
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,279.38
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,217.49
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,199.68
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,200.07
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12370091016508342
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1257415636344093
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1255370931032819
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12439800799660394
+8,raid00,256,ahead,write-back,direct,PostMark {},4032
+8,raid00,256,ahead,write-back,direct,PostMark {},3906
+8,raid00,256,ahead,write-back,direct,PostMark {},3968
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07583194349819478
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07546727799487778
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07752516215243895
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26088.32
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26712.73
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},27128.74
+4x830,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,872.16
+4x830,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,864.62
+4x830,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,857.26
+4x830,raid0,512,ahead,write-back,direct,SQLite {},0.11671389656497838
+4x830,raid0,512,ahead,write-back,direct,SQLite {},0.11548057430709291
+4x830,raid0,512,ahead,write-back,direct,SQLite {},0.129398832656614
+4x830,raid0,512,ahead,write-back,direct,SQLite {},0.11720350681902335
+4x830,raid0,512,ahead,write-back,direct,SQLite {},0.1187529981613875
+4x830,raid0,512,ahead,write-back,direct,SQLite {},0.11533778197651871
+4x830,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,746.8
+4x830,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,600.3
+4x830,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,612.1
+4x830,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,628.1
+4x830,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,635.5
+4x830,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,691.5
+4x830,raid0,512,ahead,write-back,direct,Dbench 12,2351.46
+4x830,raid0,512,ahead,write-back,direct,Dbench 12,2325.58
+4x830,raid0,512,ahead,write-back,direct,Dbench 12,2300.8
+4x830,raid0,512,ahead,write-back,direct,Dbench 48,2173.49
+4x830,raid0,512,ahead,write-back,direct,Dbench 48,2025.58
+4x830,raid0,512,ahead,write-back,direct,Dbench 48,2056.27
+4x830,raid0,512,ahead,write-back,direct,Dbench 48,2116.24
+4x830,raid0,512,ahead,write-back,direct,Dbench 128,2016.37
+4x830,raid0,512,ahead,write-back,direct,Dbench 128,1954.74
+4x830,raid0,512,ahead,write-back,direct,Dbench 128,1955.88
+4x830,raid0,512,ahead,write-back,direct,Dbench 1,593.819
+4x830,raid0,512,ahead,write-back,direct,Dbench 1,576.684
+4x830,raid0,512,ahead,write-back,direct,Dbench 1,606.776
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1290.78515625
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1409.5107421875
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1362.927734375
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1336.2939453125
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1310.5859375
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1379.68359375
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1401.8642578125
+4x830,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1325.044921875
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,504.667
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,429.102
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,508.806
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,519.127
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,504.883
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,526.933
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,224.224
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,227.884
+4x830,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,227.53
+4x830,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1409.12
+4x830,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1409.91
+4x830,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1314.92
+4x830,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1446.96
+4x830,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1375.38
+4x830,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1397.73
+4x830,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,241.08
+4x830,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,243.19
+4x830,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,245.97
+4x830,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,188.06
+4x830,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,189.08
+4x830,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,183.92
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.10162246409878434
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11202473532001461
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12255918815945545
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12513685291870533
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12238140572371965
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12441510746740282
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11318279745091034
+4x830,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1198331793909527
+4x830,raid0,512,ahead,write-back,direct,PostMark {},3378
+4x830,raid0,512,ahead,write-back,direct,PostMark {},3846
+4x830,raid0,512,ahead,write-back,direct,PostMark {},3424
+4x830,raid0,512,ahead,write-back,direct,PostMark {},3472
+4x830,raid0,512,ahead,write-back,direct,PostMark {},3472
+4x830,raid0,512,ahead,write-back,direct,PostMark {},3846
+4x830,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07677524860454366
+4x830,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07576095542054835
+4x830,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07689656517086033
+4x830,raid0,512,ahead,write-back,direct,Apache Benchmark {},26907.24
+4x830,raid0,512,ahead,write-back,direct,Apache Benchmark {},25901.56
+4x830,raid0,512,ahead,write-back,direct,Apache Benchmark {},24675.08
+4x830,raid0,512,ahead,write-back,direct,Apache Benchmark {},24902.36
+4x830,raid0,512,ahead,write-back,direct,Apache Benchmark {},25213.28
+4x830,raid0,512,ahead,write-back,direct,Apache Benchmark {},26115.3
+4x840,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1003.12
+4x840,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1058.27
+4x840,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1034.18
+4x840,raid00,256,ahead,write-back,direct,SQLite {},0.11153989664984627
+4x840,raid00,256,ahead,write-back,direct,SQLite {},0.11710338166927163
+4x840,raid00,256,ahead,write-back,direct,SQLite {},0.1139264501882375
+4x840,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,743.8
+4x840,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,600.9
+4x840,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,617.8
+4x840,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,608.4
+4x840,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,610.6
+4x840,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,623.7
+4x840,raid00,256,ahead,write-back,direct,Dbench 12,2333.83
+4x840,raid00,256,ahead,write-back,direct,Dbench 12,2330.65
+4x840,raid00,256,ahead,write-back,direct,Dbench 12,2330.92
+4x840,raid00,256,ahead,write-back,direct,Dbench 48,2173.22
+4x840,raid00,256,ahead,write-back,direct,Dbench 48,2053.44
+4x840,raid00,256,ahead,write-back,direct,Dbench 48,2071.72
+4x840,raid00,256,ahead,write-back,direct,Dbench 128,1965.23
+4x840,raid00,256,ahead,write-back,direct,Dbench 128,2012.24
+4x840,raid00,256,ahead,write-back,direct,Dbench 128,1925.07
+4x840,raid00,256,ahead,write-back,direct,Dbench 1,583.207
+4x840,raid00,256,ahead,write-back,direct,Dbench 1,596.519
+4x840,raid00,256,ahead,write-back,direct,Dbench 1,574.992
+4x840,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1378.65234375
+4x840,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1334.5615234375
+4x840,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1335.9677734375
+4x840,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1404.7783203125
+4x840,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1323.1796875
+4x840,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1366.9990234375
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,540.3
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,546.465
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,544.006
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,244.556
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,239.412
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,201.614
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,237.273
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.595
+4x840,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,246.796
+4x840,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,747.38
+4x840,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1490.31
+4x840,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1469.28
+4x840,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1512.67
+4x840,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1490.05
+4x840,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1465.23
+4x840,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,277.72
+4x840,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,276.97
+4x840,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,271.98
+4x840,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,210.31
+4x840,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,221.72
+4x840,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,224.02
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12215512978973858
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12576134595305252
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1130689528554701
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12478382709368671
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12580619685287123
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11367306251275322
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12590893871260792
+4x840,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11352191310779129
+4x840,raid00,256,ahead,write-back,direct,PostMark {},4098
+4x840,raid00,256,ahead,write-back,direct,PostMark {},3968
+4x840,raid00,256,ahead,write-back,direct,PostMark {},3968
+4x840,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07675221490672926
+4x840,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07596414129378613
+4x840,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07675289328651762
+4x840,raid00,256,ahead,write-back,direct,Apache Benchmark {},26974.39
+4x840,raid00,256,ahead,write-back,direct,Apache Benchmark {},26622.87
+4x840,raid00,256,ahead,write-back,direct,Apache Benchmark {},26643.86
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1024.53
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1016.5
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1076.14
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11230865902068153
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11652224909423273
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11556582855368491
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,621.5
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,618.7
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,613.8
+8,raid0,256,ahead,write-back,direct,Dbench 12,2327.45
+8,raid0,256,ahead,write-back,direct,Dbench 12,2323.96
+8,raid0,256,ahead,write-back,direct,Dbench 12,2347.26
+8,raid0,256,ahead,write-back,direct,Dbench 48,2160.81
+8,raid0,256,ahead,write-back,direct,Dbench 48,2060.97
+8,raid0,256,ahead,write-back,direct,Dbench 48,2095.59
+8,raid0,256,ahead,write-back,direct,Dbench 128,2004.06
+8,raid0,256,ahead,write-back,direct,Dbench 128,2034.38
+8,raid0,256,ahead,write-back,direct,Dbench 128,1952.35
+8,raid0,256,ahead,write-back,direct,Dbench 1,578.638
+8,raid0,256,ahead,write-back,direct,Dbench 1,592.274
+8,raid0,256,ahead,write-back,direct,Dbench 1,575.867
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1312.587890625
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1350.7568359375
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1273.7802734375
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1354.283203125
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1386.3974609375
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1399.484375
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,520.17
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,529.596
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,532.343
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,155.52
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,157.349
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,171.457
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,266.389
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,266.455
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,154.152
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1451.96
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1489.78
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1426.37
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,274.14
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,266.82
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,258.02
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,194.82
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,187.46
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,193.25
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11360780676631435
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11310616695665607
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12583866486272913
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11281529778605347
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1249102961002254
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11383522652328115
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12377933544285938
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11162482130411513
+8,raid0,256,ahead,write-back,direct,PostMark {},3968
+8,raid0,256,ahead,write-back,direct,PostMark {},4032
+8,raid0,256,ahead,write-back,direct,PostMark {},3968
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07631510424271694
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07643777387419935
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07547268405353776
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26646.96
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26373.1
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26758.68
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1082.94
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1095.09
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1096.73
+8,raid00,256,ahead,write-back,direct,SQLite {},0.1259162452275607
+8,raid00,256,ahead,write-back,direct,SQLite {},0.1169410777065096
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11476270603871307
+8,raid00,256,ahead,write-back,direct,SQLite {},0.1139470632273164
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11536779662984296
+8,raid00,256,ahead,write-back,direct,SQLite {},0.13246849111258968
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,711.6
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,596.3
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,581.4
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,598.8
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,593.3
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,620.8
+8,raid00,256,ahead,write-back,direct,Dbench 12,2341.19
+8,raid00,256,ahead,write-back,direct,Dbench 12,2337.82
+8,raid00,256,ahead,write-back,direct,Dbench 12,2346.89
+8,raid00,256,ahead,write-back,direct,Dbench 48,2173.54
+8,raid00,256,ahead,write-back,direct,Dbench 48,2038.32
+8,raid00,256,ahead,write-back,direct,Dbench 48,2079.18
+8,raid00,256,ahead,write-back,direct,Dbench 128,1992.65
+8,raid00,256,ahead,write-back,direct,Dbench 128,2030.26
+8,raid00,256,ahead,write-back,direct,Dbench 128,1942.41
+8,raid00,256,ahead,write-back,direct,Dbench 1,575.48
+8,raid00,256,ahead,write-back,direct,Dbench 1,601.8
+8,raid00,256,ahead,write-back,direct,Dbench 1,572.311
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1301.259765625
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1337.5283203125
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1286.126953125
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1392.75390625
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1341.9150390625
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1390.1708984375
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,544.643
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,528.483
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,511.306
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,257.89
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,259.057
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,252.956
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1443.81
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1489.64
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1509.53
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,270.28
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,277.33
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,280.31
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,213.11
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,215.01
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,204.89
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12367627471834985
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12482150464483031
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12540051483435224
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11814069266270237
+8,raid00,256,ahead,write-back,direct,PostMark {},4098
+8,raid00,256,ahead,write-back,direct,PostMark {},4032
+8,raid00,256,ahead,write-back,direct,PostMark {},4032
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07647726677441545
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.0765323441949825
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07715751705974774
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26905.67
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26302.29
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26532.49
+4x840,raid00,512,ahead,write-back,direct,AIO-Stress -o 2,1033.13
+4x840,raid00,512,ahead,write-back,direct,AIO-Stress -o 2,1027.13
+4x840,raid00,512,ahead,write-back,direct,AIO-Stress -o 2,986.69
+4x840,raid00,512,ahead,write-back,direct,SQLite {},0.11044118899728428
+4x840,raid00,512,ahead,write-back,direct,SQLite {},0.11497289835098431
+4x840,raid00,512,ahead,write-back,direct,SQLite {},0.1138851629846289
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,738.5
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,608.8
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,593.3
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,603.8
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,637.1
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,606.8
+4x840,raid00,512,ahead,write-back,direct,Dbench 12,2326.82
+4x840,raid00,512,ahead,write-back,direct,Dbench 12,2319.02
+4x840,raid00,512,ahead,write-back,direct,Dbench 12,2343.06
+4x840,raid00,512,ahead,write-back,direct,Dbench 48,2156.23
+4x840,raid00,512,ahead,write-back,direct,Dbench 48,2058.95
+4x840,raid00,512,ahead,write-back,direct,Dbench 48,2047.93
+4x840,raid00,512,ahead,write-back,direct,Dbench 128,1951.32
+4x840,raid00,512,ahead,write-back,direct,Dbench 128,2003.53
+4x840,raid00,512,ahead,write-back,direct,Dbench 128,1937.29
+4x840,raid00,512,ahead,write-back,direct,Dbench 1,581.887
+4x840,raid00,512,ahead,write-back,direct,Dbench 1,593.809
+4x840,raid00,512,ahead,write-back,direct,Dbench 1,571.612
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1310.7197265625
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1347.9912109375
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1374.7724609375
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1361.0146484375
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1368.173828125
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1373.56640625
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,576.374
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,581.985
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,543.573
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,562.172
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,257.356
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,193.688
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,223.182
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,237.827
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,230.753
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,217.272
+4x840,raid00,512,ahead,write-back,direct,Compile Bench COMPILE,1467.46
+4x840,raid00,512,ahead,write-back,direct,Compile Bench COMPILE,1477.3
+4x840,raid00,512,ahead,write-back,direct,Compile Bench COMPILE,1469.28
+4x840,raid00,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,274.04
+4x840,raid00,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,276.36
+4x840,raid00,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,261.86
+4x840,raid00,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,214.58
+4x840,raid00,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,209.73
+4x840,raid00,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,214.2
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11622640493032456
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12158038288203853
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11241142278854498
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12474847263348074
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12452645744551419
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1256463247009713
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12435039115799439
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12485497898010109
+4x840,raid00,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid00,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid00,512,ahead,write-back,direct,PostMark {},3968
+4x840,raid00,512,ahead,write-back,direct,Gzip Compression {},0.07548749662927311
+4x840,raid00,512,ahead,write-back,direct,Gzip Compression {},0.07579534117240604
+4x840,raid00,512,ahead,write-back,direct,Gzip Compression {},0.07626073411581963
+4x840,raid00,512,ahead,write-back,direct,Apache Benchmark {},25936.77
+4x840,raid00,512,ahead,write-back,direct,Apache Benchmark {},26991.81
+4x840,raid00,512,ahead,write-back,direct,Apache Benchmark {},26723.88
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,993.3
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,435.82
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,962.05
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,997.2
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1000.49
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1203.7
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11085289890110585
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11149207826984738
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.114816256935013
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,830.3
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,837.8
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,852.6
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2350.4
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2339.85
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2345.39
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2165.01
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2066.58
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2084.76
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1993.75
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,2014.27
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1926.55
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,577.236
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,590.908
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,572.738
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1322.6005859375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1324.40234375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1282.267578125
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1397.919921875
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1360.4921875
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1383.51953125
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,560.099
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,542.65
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,573.268
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,224.54
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,176.854
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,172.904
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,225.233
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,28.768
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,173.944
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1466.08
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1489.5
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1500.22
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,273.06
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,282.61
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,265.62
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,205.98
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,199.38
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,213.59
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12400344701049222
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11245006536054937
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11937712993324252
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11362505096367029
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12580578554289765
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11367455977269728
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11649286352394846
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12414432018743946
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4098
+4x840,raid0,512,ahead,write-back,direct,PostMark {},3968
+4x840,raid0,512,ahead,write-back,direct,PostMark {},3968
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07617341231354309
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07620768063962964
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07663437731974178
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26601.85
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},25942.39
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26609.71
+4x840,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1062.69
+4x840,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1048.05
+4x840,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1032.76
+4x840,raid0,256,ahead,write-back,direct,SQLite {},0.11259524064293765
+4x840,raid0,256,ahead,write-back,direct,SQLite {},0.12616817425804783
+4x840,raid0,256,ahead,write-back,direct,SQLite {},0.11705517012571155
+4x840,raid0,256,ahead,write-back,direct,SQLite {},0.12059957740876481
+4x840,raid0,256,ahead,write-back,direct,SQLite {},0.11846913830060439
+4x840,raid0,256,ahead,write-back,direct,SQLite {},0.11399629541610429
+4x840,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,726.2
+4x840,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,627.3
+4x840,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,631.8
+4x840,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,613.6
+4x840,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,639.1
+4x840,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,645.6
+4x840,raid0,256,ahead,write-back,direct,Dbench 12,2356.04
+4x840,raid0,256,ahead,write-back,direct,Dbench 12,2342.23
+4x840,raid0,256,ahead,write-back,direct,Dbench 12,2346.99
+4x840,raid0,256,ahead,write-back,direct,Dbench 48,2168.99
+4x840,raid0,256,ahead,write-back,direct,Dbench 48,2071.6
+4x840,raid0,256,ahead,write-back,direct,Dbench 48,2070.43
+4x840,raid0,256,ahead,write-back,direct,Dbench 128,1993.94
+4x840,raid0,256,ahead,write-back,direct,Dbench 128,1988.93
+4x840,raid0,256,ahead,write-back,direct,Dbench 128,1951.24
+4x840,raid0,256,ahead,write-back,direct,Dbench 1,577.403
+4x840,raid0,256,ahead,write-back,direct,Dbench 1,590.891
+4x840,raid0,256,ahead,write-back,direct,Dbench 1,575.713
+4x840,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1292.7587890625
+4x840,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1261.5283203125
+4x840,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1284.703125
+4x840,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1405.484375
+4x840,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1402.3671875
+4x840,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1415.7275390625
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,563.403
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,538.19
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,570.524
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,259.835
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,254.913
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,238.669
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,253.895
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,234.811
+4x840,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,257.816
+4x840,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1394.57
+4x840,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,765.38
+4x840,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1479.14
+4x840,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1502.66
+4x840,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,811.42
+4x840,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1476.68
+4x840,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,278.82
+4x840,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,272.84
+4x840,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,277.91
+4x840,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,219.36
+4x840,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,211.31
+4x840,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,207.3
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11223905174562433
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12483824142632646
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1141287149074879
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12457054269883441
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1162122999947446
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12096639200768325
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12452661272468137
+4x840,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1266840409159188
+4x840,raid0,256,ahead,write-back,direct,PostMark {},4032
+4x840,raid0,256,ahead,write-back,direct,PostMark {},4032
+4x840,raid0,256,ahead,write-back,direct,PostMark {},3623
+4x840,raid0,256,ahead,write-back,direct,PostMark {},3623
+4x840,raid0,256,ahead,write-back,direct,PostMark {},3968
+4x840,raid0,256,ahead,write-back,direct,PostMark {},3968
+4x840,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07612911956828634
+4x840,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07520357597387041
+4x840,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07648398724834192
+4x840,raid0,256,ahead,write-back,direct,Apache Benchmark {},27181.34
+4x840,raid0,256,ahead,write-back,direct,Apache Benchmark {},23155.49
+4x840,raid0,256,ahead,write-back,direct,Apache Benchmark {},25567.57
+4x840,raid0,256,ahead,write-back,direct,Apache Benchmark {},21465.08
+4x840,raid0,256,ahead,write-back,direct,Apache Benchmark {},20395.16
+4x840,raid0,256,ahead,write-back,direct,Apache Benchmark {},20522.04
+8,raid00,512,ahead,write-back,cached,AIO-Stress -o 2,1097.23
+8,raid00,512,ahead,write-back,cached,AIO-Stress -o 2,1126.13
+8,raid00,512,ahead,write-back,cached,AIO-Stress -o 2,1123.63
+8,raid00,512,ahead,write-back,cached,SQLite {},0.11546657351459877
+8,raid00,512,ahead,write-back,cached,SQLite {},0.1214872870625448
+8,raid00,512,ahead,write-back,cached,SQLite {},0.13334675818071842
+8,raid00,512,ahead,write-back,cached,SQLite {},0.11848391691755122
+8,raid00,512,ahead,write-back,cached,SQLite {},0.1103341630681767
+8,raid00,512,ahead,write-back,cached,SQLite {},0.11533829895544145
+8,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,703.4
+8,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,581.1
+8,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,622.8
+8,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,597.4
+8,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,612.5
+8,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,698.5
+8,raid00,512,ahead,write-back,cached,Dbench 12,2338.61
+8,raid00,512,ahead,write-back,cached,Dbench 12,2332.11
+8,raid00,512,ahead,write-back,cached,Dbench 12,2347.22
+8,raid00,512,ahead,write-back,cached,Dbench 48,2164.8
+8,raid00,512,ahead,write-back,cached,Dbench 48,2072.86
+8,raid00,512,ahead,write-back,cached,Dbench 48,2083.65
+8,raid00,512,ahead,write-back,cached,Dbench 128,2002.27
+8,raid00,512,ahead,write-back,cached,Dbench 128,2036.5
+8,raid00,512,ahead,write-back,cached,Dbench 128,1976.72
+8,raid00,512,ahead,write-back,cached,Dbench 1,576.43
+8,raid00,512,ahead,write-back,cached,Dbench 1,583.637
+8,raid00,512,ahead,write-back,cached,Dbench 1,571.942
+8,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1364.130859375
+8,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1394.6826171875
+8,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1436.57421875
+8,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1400.6357421875
+8,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1393.4287109375
+8,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1394.8818359375
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,289.69
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,288.762
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,290.132
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,164.331
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,249.681
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,248.009
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,226.368
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,266.683
+8,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,242.443
+8,raid00,512,ahead,write-back,cached,Compile Bench COMPILE,1477.81
+8,raid00,512,ahead,write-back,cached,Compile Bench COMPILE,1432.44
+8,raid00,512,ahead,write-back,cached,Compile Bench COMPILE,1452.67
+8,raid00,512,ahead,write-back,cached,Compile Bench INITIAL_CREATE,274.07
+8,raid00,512,ahead,write-back,cached,Compile Bench INITIAL_CREATE,274.96
+8,raid00,512,ahead,write-back,cached,Compile Bench INITIAL_CREATE,276.09
+8,raid00,512,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,199.06
+8,raid00,512,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,193.81
+8,raid00,512,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,197.01
+8,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12423261780946593
+8,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12387245180953359
+8,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.1247321234262486
+8,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12446824027157939
+8,raid00,512,ahead,write-back,cached,PostMark {},4098
+8,raid00,512,ahead,write-back,cached,PostMark {},3968
+8,raid00,512,ahead,write-back,cached,PostMark {},3968
+8,raid00,512,ahead,write-back,cached,Gzip Compression {},0.07654435288703418
+8,raid00,512,ahead,write-back,cached,Gzip Compression {},0.07630199026610933
+8,raid00,512,ahead,write-back,cached,Gzip Compression {},0.0768597619363518
+8,raid00,512,ahead,write-back,cached,Apache Benchmark {},26935.44
+8,raid00,512,ahead,write-back,cached,Apache Benchmark {},27024.68
+8,raid00,512,ahead,write-back,cached,Apache Benchmark {},27112.76
+4x840,raid00,512,ahead,write-back,cached,AIO-Stress -o 2,1024.61
+4x840,raid00,512,ahead,write-back,cached,AIO-Stress -o 2,978.3
+4x840,raid00,512,ahead,write-back,cached,AIO-Stress -o 2,990.33
+4x840,raid00,512,ahead,write-back,cached,SQLite {},0.1126794193653301
+4x840,raid00,512,ahead,write-back,cached,SQLite {},0.11456881039676171
+4x840,raid00,512,ahead,write-back,cached,SQLite {},0.11471947391504034
+4x840,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,746.7
+4x840,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,628.8
+4x840,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,636.2
+4x840,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,631.2
+4x840,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,630.6
+4x840,raid00,512,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,815.5
+4x840,raid00,512,ahead,write-back,cached,Dbench 12,2357.53
+4x840,raid00,512,ahead,write-back,cached,Dbench 12,2344.87
+4x840,raid00,512,ahead,write-back,cached,Dbench 12,2366.72
+4x840,raid00,512,ahead,write-back,cached,Dbench 48,2186.56
+4x840,raid00,512,ahead,write-back,cached,Dbench 48,2061.14
+4x840,raid00,512,ahead,write-back,cached,Dbench 48,2077.98
+4x840,raid00,512,ahead,write-back,cached,Dbench 128,2002.9
+4x840,raid00,512,ahead,write-back,cached,Dbench 128,2041.08
+4x840,raid00,512,ahead,write-back,cached,Dbench 128,1939.86
+4x840,raid00,512,ahead,write-back,cached,Dbench 1,579.05
+4x840,raid00,512,ahead,write-back,cached,Dbench 1,593.314
+4x840,raid00,512,ahead,write-back,cached,Dbench 1,569.642
+4x840,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1377.984375
+4x840,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1377.17578125
+4x840,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1381.392578125
+4x840,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1376.5263671875
+4x840,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1371.8193359375
+4x840,raid00,512,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1390.873046875
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,294.428
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,296.278
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,297.166
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,205.157
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,212.443
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.757
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,241.108
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.726
+4x840,raid00,512,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,227.645
+4x840,raid00,512,ahead,write-back,cached,Compile Bench COMPILE,1440.12
+4x840,raid00,512,ahead,write-back,cached,Compile Bench COMPILE,1477.19
+4x840,raid00,512,ahead,write-back,cached,Compile Bench COMPILE,1506.23
+4x840,raid00,512,ahead,write-back,cached,Compile Bench INITIAL_CREATE,275.29
+4x840,raid00,512,ahead,write-back,cached,Compile Bench INITIAL_CREATE,282.64
+4x840,raid00,512,ahead,write-back,cached,Compile Bench INITIAL_CREATE,275.5
+4x840,raid00,512,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,209.7
+4x840,raid00,512,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,211.25
+4x840,raid00,512,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,209.98
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.11421567268563727
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12670025520668943
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12388702853569512
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12471351643998345
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.11293160561756539
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12033287386950456
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12431641670770961
+4x840,raid00,512,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12467588921961892
+4x840,raid00,512,ahead,write-back,cached,PostMark {},4032
+4x840,raid00,512,ahead,write-back,cached,PostMark {},4032
+4x840,raid00,512,ahead,write-back,cached,PostMark {},3968
+4x840,raid00,512,ahead,write-back,cached,Gzip Compression {},0.07741479176118012
+4x840,raid00,512,ahead,write-back,cached,Gzip Compression {},0.07715890948992572
+4x840,raid00,512,ahead,write-back,cached,Gzip Compression {},0.07613743193622843
+4x840,raid00,512,ahead,write-back,cached,Apache Benchmark {},26810.09
+4x840,raid00,512,ahead,write-back,cached,Apache Benchmark {},27123.65
+4x840,raid00,512,ahead,write-back,cached,Apache Benchmark {},26634.95
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1040.2
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1107.42
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1099.24
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11351089599910631
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11488713485816134
+8,raid0,256,ahead,write-back,direct,SQLite {},0.10953916421616454
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,598.7
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,596.3
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,634.9
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,608.9
+8,raid0,256,ahead,write-back,direct,Dbench 12,2370.31
+8,raid0,256,ahead,write-back,direct,Dbench 12,2361.95
+8,raid0,256,ahead,write-back,direct,Dbench 12,2373.13
+8,raid0,256,ahead,write-back,direct,Dbench 48,2179.54
+8,raid0,256,ahead,write-back,direct,Dbench 48,2088.59
+8,raid0,256,ahead,write-back,direct,Dbench 48,2097.26
+8,raid0,256,ahead,write-back,direct,Dbench 128,2031.78
+8,raid0,256,ahead,write-back,direct,Dbench 128,2059.54
+8,raid0,256,ahead,write-back,direct,Dbench 128,1973.16
+8,raid0,256,ahead,write-back,direct,Dbench 1,572.629
+8,raid0,256,ahead,write-back,direct,Dbench 1,586.9
+8,raid0,256,ahead,write-back,direct,Dbench 1,573.843
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1304.341796875
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1310.3408203125
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1335.8115234375
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1392.9189453125
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1393.9248046875
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1372.162109375
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,532.298
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,541.142
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,535.027
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,264.289
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,157.613
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,176.015
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,162.848
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,160.416
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,266.531
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1471.65
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1502.66
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1461.15
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,274.99
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,271.77
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,275.18
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,195.43
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,186.81
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,192.95
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1256235308106514
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12403462426649965
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1253073152777201
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12367162885962192
+8,raid0,256,ahead,write-back,direct,PostMark {},4098
+8,raid0,256,ahead,write-back,direct,PostMark {},4032
+8,raid0,256,ahead,write-back,direct,PostMark {},4032
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07583672181143056
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07661230826163577
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.0768172632545971
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26956.6
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26491.92
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26589.43
+8,raid00,128,ahead,write-back,direct,AIO-Stress -o 2,1087.6
+8,raid00,128,ahead,write-back,direct,AIO-Stress -o 2,1065.49
+8,raid00,128,ahead,write-back,direct,AIO-Stress -o 2,1039.38
+8,raid00,128,ahead,write-back,direct,SQLite {},0.11317566017857919
+8,raid00,128,ahead,write-back,direct,SQLite {},0.11415157588246234
+8,raid00,128,ahead,write-back,direct,SQLite {},0.1145597011896471
+8,raid00,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,726.7
+8,raid00,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,599.2
+8,raid00,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,603.9
+8,raid00,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,621.8
+8,raid00,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,614.8
+8,raid00,128,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,695.5
+8,raid00,128,ahead,write-back,direct,Dbench 12,2372.59
+8,raid00,128,ahead,write-back,direct,Dbench 12,2327.96
+8,raid00,128,ahead,write-back,direct,Dbench 12,2365.27
+8,raid00,128,ahead,write-back,direct,Dbench 48,2195.09
+8,raid00,128,ahead,write-back,direct,Dbench 48,2093.99
+8,raid00,128,ahead,write-back,direct,Dbench 48,2080.43
+8,raid00,128,ahead,write-back,direct,Dbench 128,2013.8
+8,raid00,128,ahead,write-back,direct,Dbench 128,2041.11
+8,raid00,128,ahead,write-back,direct,Dbench 128,1968.63
+8,raid00,128,ahead,write-back,direct,Dbench 1,585.538
+8,raid00,128,ahead,write-back,direct,Dbench 1,587.156
+8,raid00,128,ahead,write-back,direct,Dbench 1,572.012
+8,raid00,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1264.3349609375
+8,raid00,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1308.9658203125
+8,raid00,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1277.279296875
+8,raid00,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1354.16015625
+8,raid00,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1362.5234375
+8,raid00,128,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1383.9580078125
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,541.179
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,547.487
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,532.79
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,239.412
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.518
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,210.996
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,241.108
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,239.788
+8,raid00,128,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.068
+8,raid00,128,ahead,write-back,direct,Compile Bench COMPILE,1434.79
+8,raid00,128,ahead,write-back,direct,Compile Bench COMPILE,1473.75
+8,raid00,128,ahead,write-back,direct,Compile Bench COMPILE,1458.14
+8,raid00,128,ahead,write-back,direct,Compile Bench INITIAL_CREATE,266.12
+8,raid00,128,ahead,write-back,direct,Compile Bench INITIAL_CREATE,266.61
+8,raid00,128,ahead,write-back,direct,Compile Bench INITIAL_CREATE,272.28
+8,raid00,128,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,216.66
+8,raid00,128,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,201.33
+8,raid00,128,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,208.62
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12478811136945281
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1135150463653975
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11315846356944687
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1124615378716543
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11386711329890524
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1250337304272596
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1253284703594543
+8,raid00,128,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12514583998265377
+8,raid00,128,ahead,write-back,direct,PostMark {},3968
+8,raid00,128,ahead,write-back,direct,PostMark {},3906
+8,raid00,128,ahead,write-back,direct,PostMark {},3846
+8,raid00,128,ahead,write-back,direct,Gzip Compression {},0.07666606834666528
+8,raid00,128,ahead,write-back,direct,Gzip Compression {},0.07554376400988703
+8,raid00,128,ahead,write-back,direct,Gzip Compression {},0.07564654622796246
+8,raid00,128,ahead,write-back,direct,Apache Benchmark {},26743.46
+8,raid00,128,ahead,write-back,direct,Apache Benchmark {},26131.67
+8,raid00,128,ahead,write-back,direct,Apache Benchmark {},26236.7
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,1030.21
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,962.01
+4x840,raid0,512,ahead,write-back,direct,AIO-Stress -o 2,990.25
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11095020881675488
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11201886224593519
+4x840,raid0,512,ahead,write-back,direct,SQLite {},0.11730197273970014
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,745.4
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,644.2
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,643.6
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,630.3
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,714.4
+4x840,raid0,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,823.3
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2368.4
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2378.01
+4x840,raid0,512,ahead,write-back,direct,Dbench 12,2377.52
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2170.95
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2082.98
+4x840,raid0,512,ahead,write-back,direct,Dbench 48,2091.55
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,2016.54
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,2030.19
+4x840,raid0,512,ahead,write-back,direct,Dbench 128,1977.77
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,581.594
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,587.906
+4x840,raid0,512,ahead,write-back,direct,Dbench 1,574.012
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1324.41796875
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1327.9169921875
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1345.9443359375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1386.533203125
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1387.2490234375
+4x840,raid0,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1400.8037109375
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,550.285
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,573.587
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,583.872
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,177.761
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,171.392
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,214.653
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,231.623
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,215.203
+4x840,raid0,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,229.79
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1451.55
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1499.51
+4x840,raid0,512,ahead,write-back,direct,Compile Bench COMPILE,1461.28
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,259.77
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,279.43
+4x840,raid0,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,277.37
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,210.35
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,201.65
+4x840,raid0,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,205.29
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11271535059713171
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1251707655828019
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11391169137828909
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12520461440788697
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11330653704589143
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11195818694161982
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12558977101440089
+4x840,raid0,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12368209165051594
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4098
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid0,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07708047526206463
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07734123142619803
+4x840,raid0,512,ahead,write-back,direct,Gzip Compression {},0.07627472995674628
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26681.06
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26882.34
+4x840,raid0,512,ahead,write-back,direct,Apache Benchmark {},26033.21
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1039.49
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1073.37
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1113.18
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11352489049052412
+8,raid0,256,ahead,write-back,direct,SQLite {},0.1174987335624696
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11293498391708569
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,739.6
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,624.7
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,628.3
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,621.4
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,604.8
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,633.1
+8,raid0,256,ahead,write-back,direct,Dbench 12,2373.13
+8,raid0,256,ahead,write-back,direct,Dbench 12,2356.83
+8,raid0,256,ahead,write-back,direct,Dbench 12,2377.64
+8,raid0,256,ahead,write-back,direct,Dbench 48,2163.64
+8,raid0,256,ahead,write-back,direct,Dbench 48,2089.2
+8,raid0,256,ahead,write-back,direct,Dbench 48,2111.09
+8,raid0,256,ahead,write-back,direct,Dbench 128,2028.97
+8,raid0,256,ahead,write-back,direct,Dbench 128,2059.29
+8,raid0,256,ahead,write-back,direct,Dbench 128,1983.43
+8,raid0,256,ahead,write-back,direct,Dbench 1,578.698
+8,raid0,256,ahead,write-back,direct,Dbench 1,592.958
+8,raid0,256,ahead,write-back,direct,Dbench 1,576.227
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1296.3486328125
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1334.498046875
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1298.9677734375
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1418.73046875
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1385.65234375
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1394.3408203125
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,578.423
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,545.447
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,559.805
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,171.669
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,264.178
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,265.143
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,265.403
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,262.323
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,266.499
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1436.72
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1467.32
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1483.75
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,268.23
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,261.71
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,278.79
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,201.29
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,189.25
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,194.53
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12558961307249447
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12678902321216623
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11219923041828672
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12508283453184735
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12505613552073236
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12613413251388042
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1255417110837308
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11194733379808353
+8,raid0,256,ahead,write-back,direct,PostMark {},4098
+8,raid0,256,ahead,write-back,direct,PostMark {},3968
+8,raid0,256,ahead,write-back,direct,PostMark {},4032
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.0756114461230944
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07685550305161308
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07682170785283354
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26838.22
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26630.24
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},27005.62
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1101.99
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1096.24
+8,raid00,256,ahead,write-back,direct,AIO-Stress -o 2,1089.53
+8,raid00,256,ahead,write-back,direct,SQLite {},0.12001610514274068
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11295409290218172
+8,raid00,256,ahead,write-back,direct,SQLite {},0.11857161022428139
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,737.8
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,642.9
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,602.3
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,639.8
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,605.7
+8,raid00,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,586.7
+8,raid00,256,ahead,write-back,direct,Dbench 12,2385.73
+8,raid00,256,ahead,write-back,direct,Dbench 12,2339.43
+8,raid00,256,ahead,write-back,direct,Dbench 12,2329.93
+8,raid00,256,ahead,write-back,direct,Dbench 48,2194.32
+8,raid00,256,ahead,write-back,direct,Dbench 48,2097.84
+8,raid00,256,ahead,write-back,direct,Dbench 48,2083.99
+8,raid00,256,ahead,write-back,direct,Dbench 128,2028.66
+8,raid00,256,ahead,write-back,direct,Dbench 128,2057.69
+8,raid00,256,ahead,write-back,direct,Dbench 128,1986.9
+8,raid00,256,ahead,write-back,direct,Dbench 1,573.685
+8,raid00,256,ahead,write-back,direct,Dbench 1,595.293
+8,raid00,256,ahead,write-back,direct,Dbench 1,573.148
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1313.2861328125
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1309.4638671875
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1355.5166015625
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1390.869140625
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1391.283203125
+8,raid00,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1381.7373046875
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,528.179
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,529.441
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,528.133
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,258.62
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,258.9
+8,raid00,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,256.944
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1457.99
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1496.51
+8,raid00,256,ahead,write-back,direct,Compile Bench COMPILE,1470.74
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,262.75
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,274.17
+8,raid00,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,272.34
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,217.08
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,200.93
+8,raid00,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,204.19
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12414279530428508
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12475860632190558
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12549355274981777
+8,raid00,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1249082055258727
+8,raid00,256,ahead,write-back,direct,PostMark {},4098
+8,raid00,256,ahead,write-back,direct,PostMark {},3906
+8,raid00,256,ahead,write-back,direct,PostMark {},3968
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07574388366871859
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07658306668448278
+8,raid00,256,ahead,write-back,direct,Gzip Compression {},0.07615060000925439
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26887.5
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26619.19
+8,raid00,256,ahead,write-back,direct,Apache Benchmark {},26769.2
+8,raid00,256,ahead,write-back,cached,AIO-Stress -o 2,1150.44
+8,raid00,256,ahead,write-back,cached,AIO-Stress -o 2,1088.3
+8,raid00,256,ahead,write-back,cached,AIO-Stress -o 2,1089.09
+8,raid00,256,ahead,write-back,cached,SQLite {},0.11753328572375282
+8,raid00,256,ahead,write-back,cached,SQLite {},0.11648233298813294
+8,raid00,256,ahead,write-back,cached,SQLite {},0.11578858360383001
+8,raid00,256,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,737.6
+8,raid00,256,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,625.4
+8,raid00,256,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,602.7
+8,raid00,256,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,623.6
+8,raid00,256,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,615.4
+8,raid00,256,ahead,write-back,cached,FS-Mark -s 1048576 -n 1000,621.5
+8,raid00,256,ahead,write-back,cached,Dbench 12,2359.81
+8,raid00,256,ahead,write-back,cached,Dbench 12,2348.58
+8,raid00,256,ahead,write-back,cached,Dbench 12,2372.7
+8,raid00,256,ahead,write-back,cached,Dbench 48,2188.65
+8,raid00,256,ahead,write-back,cached,Dbench 48,2103.95
+8,raid00,256,ahead,write-back,cached,Dbench 48,2102.01
+8,raid00,256,ahead,write-back,cached,Dbench 128,2022.16
+8,raid00,256,ahead,write-back,cached,Dbench 128,2066.58
+8,raid00,256,ahead,write-back,cached,Dbench 128,1967.14
+8,raid00,256,ahead,write-back,cached,Dbench 1,579.333
+8,raid00,256,ahead,write-back,cached,Dbench 1,593.318
+8,raid00,256,ahead,write-back,cached,Dbench 1,580.892
+8,raid00,256,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1349.7353515625
+8,raid00,256,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1321.259765625
+8,raid00,256,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0 -i1,1371.390625
+8,raid00,256,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1380.0458984375
+8,raid00,256,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1388.533203125
+8,raid00,256,ahead,write-back,cached,IOzone -r 4k -s 8192M -i0,1402.0439453125
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,295.126
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,294.595
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k2 -k1 -f 64 -t 32,285.44
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.621
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,252.776
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,206.439
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,224.024
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,203.457
+8,raid00,256,ahead,write-back,cached,Threaded I/O Tester -k3 -k2 -f 64 -t 32,195.858
+8,raid00,256,ahead,write-back,cached,Compile Bench COMPILE,1428.37
+8,raid00,256,ahead,write-back,cached,Compile Bench COMPILE,1496.08
+8,raid00,256,ahead,write-back,cached,Compile Bench COMPILE,1467.98
+8,raid00,256,ahead,write-back,cached,Compile Bench INITIAL_CREATE,262.36
+8,raid00,256,ahead,write-back,cached,Compile Bench INITIAL_CREATE,270.99
+8,raid00,256,ahead,write-back,cached,Compile Bench INITIAL_CREATE,275.23
+8,raid00,256,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,211.47
+8,raid00,256,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,197.36
+8,raid00,256,ahead,write-back,cached,Compile Bench READ_COMPILED_TREE,198.41
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12254242672865082
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.11316577576437237
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.11347862811739222
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12406957153989914
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12540343927939993
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.1230227953457938
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.12563205732384397
+8,raid00,256,ahead,write-back,cached,Unpacking The Linux Kernel {},0.11182742902952271
+8,raid00,256,ahead,write-back,cached,PostMark {},4098
+8,raid00,256,ahead,write-back,cached,PostMark {},3968
+8,raid00,256,ahead,write-back,cached,PostMark {},4032
+8,raid00,256,ahead,write-back,cached,Gzip Compression {},0.07627781355983781
+8,raid00,256,ahead,write-back,cached,Gzip Compression {},0.07737554531831473
+8,raid00,256,ahead,write-back,cached,Gzip Compression {},0.0766272314099632
+8,raid00,256,ahead,write-back,cached,Apache Benchmark {},26825.88
+8,raid00,256,ahead,write-back,cached,Apache Benchmark {},26411.68
+8,raid00,256,ahead,write-back,cached,Apache Benchmark {},26497.38
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1057.07
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1068.51
+8,raid0,256,ahead,write-back,direct,AIO-Stress -o 2,1071.36
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11254209524616034
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11354586257116846
+8,raid0,256,ahead,write-back,direct,SQLite {},0.11223476591047286
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,703.7
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,619.7
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,622.3
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,582.4
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,620.5
+8,raid0,256,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,690.2
+8,raid0,256,ahead,write-back,direct,Dbench 12,2379
+8,raid0,256,ahead,write-back,direct,Dbench 12,2303.91
+8,raid0,256,ahead,write-back,direct,Dbench 12,2373.95
+8,raid0,256,ahead,write-back,direct,Dbench 48,2167.51
+8,raid0,256,ahead,write-back,direct,Dbench 48,2091.17
+8,raid0,256,ahead,write-back,direct,Dbench 48,2087.87
+8,raid0,256,ahead,write-back,direct,Dbench 128,2009.43
+8,raid0,256,ahead,write-back,direct,Dbench 128,2059.36
+8,raid0,256,ahead,write-back,direct,Dbench 128,1985.64
+8,raid0,256,ahead,write-back,direct,Dbench 1,578.01
+8,raid0,256,ahead,write-back,direct,Dbench 1,594.806
+8,raid0,256,ahead,write-back,direct,Dbench 1,579.288
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1318.1337890625
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1350.4580078125
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1291.3291015625
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1389.294921875
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1393.21875
+8,raid0,256,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1394.66796875
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,545.785
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,551.3
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,510.192
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,531.68
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,269.266
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,176.371
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,173.905
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,167.875
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,266.25
+8,raid0,256,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,235.153
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1480.48
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1506.38
+8,raid0,256,ahead,write-back,direct,Compile Bench COMPILE,1446.83
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,273.75
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,274.84
+8,raid0,256,ahead,write-back,direct,Compile Bench INITIAL_CREATE,266.91
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,201.77
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,187.63
+8,raid0,256,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,185.19
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12405216331854145
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11446686120256055
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11225336526264926
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12430136302243207
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12458011835322685
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12515472377096032
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.11265141943258322
+8,raid0,256,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1255372997590988
+8,raid0,256,ahead,write-back,direct,PostMark {},4098
+8,raid0,256,ahead,write-back,direct,PostMark {},3968
+8,raid0,256,ahead,write-back,direct,PostMark {},4032
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.0769909181164224
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.07801247257229808
+8,raid0,256,ahead,write-back,direct,Gzip Compression {},0.0768459715640658
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26935.32
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26757.69
+8,raid0,256,ahead,write-back,direct,Apache Benchmark {},26862.33
+4x840,raid00,512,ahead,write-back,direct,AIO-Stress -o 2,1017.54
+4x840,raid00,512,ahead,write-back,direct,AIO-Stress -o 2,1021.01
+4x840,raid00,512,ahead,write-back,direct,AIO-Stress -o 2,989.4
+4x840,raid00,512,ahead,write-back,direct,SQLite {},0.11530026422024205
+4x840,raid00,512,ahead,write-back,direct,SQLite {},0.11486443446347168
+4x840,raid00,512,ahead,write-back,direct,SQLite {},0.11543839783557358
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,743.4
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,641.2
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,637.4
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,630.9
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,634.3
+4x840,raid00,512,ahead,write-back,direct,FS-Mark -s 1048576 -n 1000,687.7
+4x840,raid00,512,ahead,write-back,direct,Dbench 12,2374.98
+4x840,raid00,512,ahead,write-back,direct,Dbench 12,2349.99
+4x840,raid00,512,ahead,write-back,direct,Dbench 12,2354.38
+4x840,raid00,512,ahead,write-back,direct,Dbench 48,2198.91
+4x840,raid00,512,ahead,write-back,direct,Dbench 48,2091.47
+4x840,raid00,512,ahead,write-back,direct,Dbench 48,2105.54
+4x840,raid00,512,ahead,write-back,direct,Dbench 128,2016.08
+4x840,raid00,512,ahead,write-back,direct,Dbench 128,2055.41
+4x840,raid00,512,ahead,write-back,direct,Dbench 128,1969.85
+4x840,raid00,512,ahead,write-back,direct,Dbench 1,575.386
+4x840,raid00,512,ahead,write-back,direct,Dbench 1,593.232
+4x840,raid00,512,ahead,write-back,direct,Dbench 1,575.749
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1357.8251953125
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1365.4951171875
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0 -i1,1336.953125
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1382.943359375
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1401.375
+4x840,raid00,512,ahead,write-back,direct,IOzone -r 4k -s 8192M -i0,1405.732421875
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,564.992
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,576.194
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k2 -k1 -f 64 -t 32,566.549
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,259.344
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,187.844
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,236.165
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,234.524
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,230.713
+4x840,raid00,512,ahead,write-back,direct,Threaded I/O Tester -k3 -k2 -f 64 -t 32,221.886
+4x840,raid00,512,ahead,write-back,direct,Compile Bench COMPILE,1471.42
+4x840,raid00,512,ahead,write-back,direct,Compile Bench COMPILE,1470.48
+4x840,raid00,512,ahead,write-back,direct,Compile Bench COMPILE,1443.27
+4x840,raid00,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,274.73
+4x840,raid00,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,271.11
+4x840,raid00,512,ahead,write-back,direct,Compile Bench INITIAL_CREATE,263.18
+4x840,raid00,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,213.09
+4x840,raid00,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,210.35
+4x840,raid00,512,ahead,write-back,direct,Compile Bench READ_COMPILED_TREE,216.49
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12347979466156749
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12499940395639371
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.12542077129020954
+4x840,raid00,512,ahead,write-back,direct,Unpacking The Linux Kernel {},0.1273285718206171
+4x840,raid00,512,ahead,write-back,direct,PostMark {},4098
+4x840,raid00,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid00,512,ahead,write-back,direct,PostMark {},4032
+4x840,raid00,512,ahead,write-back,direct,Gzip Compression {},0.07657024067382034
+4x840,raid00,512,ahead,write-back,direct,Gzip Compression {},0.07582428985412894
+4x840,raid00,512,ahead,write-back,direct,Gzip Compression {},0.07686289865890286
+4x840,raid00,512,ahead,write-back,direct,Apache Benchmark {},26972.66
+4x840,raid00,512,ahead,write-back,direct,Apache Benchmark {},26984.22
+4x840,raid00,512,ahead,write-back,direct,Apache Benchmark {},26951.3
