@@ -236,7 +236,7 @@ get_unexecuted_experiments = function() {
 print("Starting random search, weighted toward best predictions.")
 num_runs_without_improvement = 0
 prev_best = best_benchmark()
-while (num_runs_without_improvement < 10) {
+while (num_runs_without_improvement < 5) {
   # For now, choose randomly from all experiments, not just unexecuted ones because there is some randomness and want to re-run best ones to get more data.
   unexecuted_experiments = get_all_experiments()
   #unexecuted_experiments = get_unexecuted_experiments()
@@ -252,7 +252,8 @@ while (num_runs_without_improvement < 10) {
   print("current best benchmark")
   best = best_benchmark()
   print(best)
-  if (!isTRUE(all.equal(best, prev_best))) {
+  #if (!isTRUE(all.equal(best, prev_best, check.names=F))) {
+  if (nrow(merge(best, prev_best)) == 0) {
     print("Found new best")
     num_runs_without_improvement = 0
     prev_best = best
