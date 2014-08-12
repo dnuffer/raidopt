@@ -19,25 +19,29 @@ parameters = [
     , [ "cached", "direct" ]
     #, [ "ext4", "xfs", "btrfs" ] # fs
     #, [ "ubuntu14.04", "centos7", "debian7.5", "opensuse13.1", "fedora20" ] # OS
-    #, [ "1GB", "0GB", "128MB", "4GB" ] # swap
-    #, [ "16GB", "32GB", "64GB" ] # HD size
-    #, [ "1GB", "2GB", "4GB" ] # RAM
-    #, [ "deadline", "noop", "cfq" ] # disk scheduler - https://wiki.archlinux.org/index.php/Solid_State_Drives#I.2FO_Scheduler
+    , [ "0", ".125", ".5", "2", "5" ] # swap (GB)
+    , [ "8", "16", "32", "64", "128" ] # HD size (GB)
+    , [ "1024", "2048", "3072", "4096" ] # RAM
+    , [ "1", "2", "3", "4" ] # CPUs
+    , [ "deadline", "noop", "cfq" ] # disk scheduler - https://wiki.archlinux.org/index.php/Solid_State_Drives#I.2FO_Scheduler
     # http://erikugel.wordpress.com/2011/04/14/the-quest-for-the-fastest-linux-filesystem/
-    # fs block size
-    # fs stride (ext4), sunit/swidth (xfs)
-    # journal mode
-    # directory indexing
-    # barrier=0
-    # data=writeback/data=journal
+    , [ "1024", "2048", "4096" ] # fs block size
+    , [ "1", "2", "4", "8", "16", "32", "64", "128", "256", "512", "1024" ] # fs stride (ext4)
+    , [ "8", "16", "32", "64", "128", "256", "512", "1024" ] # fs stripe width (ext4) "recommended" lowest is 16 because smallest stripe/largest block size = 64/4
+    # sunit/swidth (xfs)
+    , [ "journal_data", "journal_data_ordered", "journal_data_writeback" ] # journal mode
+    , [ "dir_index", "no_dir_index" ] # directory indexing
+    , [ "barrier", "no_barrier" ] # barrier=0
     # partition alignment
-    # noatime/nodiratime/relatime
+    , [ "noatime", "strictatime", "relatime" ] # noatime/strictatime/relatime
+    , [ "nodiratime", "diratime" ] # nodiratime
     # nobh
     # notail
     # vm_dirty_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
     # vm_dirty_background_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
     # nodealloc - http://www.phoronix.com/scan.php?page=article&item=ext4_linux35_tuning&num=1
-
+    # read ahead - https://raid.wiki.kernel.org/index.php/Performance#RAID-5
+    # ncq - https://raid.wiki.kernel.org/index.php/Performance#RAID-5
 ]
 
 def is_valid_combination( row ):

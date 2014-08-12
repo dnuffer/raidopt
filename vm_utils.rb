@@ -65,6 +65,7 @@ def wait_for_process_exit(vm, guestauth, pid, limit=60)
 end
 
 def run_program(vm, guestauth, path, args="", limit=60)
+  puts "run_program: #{path} #{args}"
   $guestProcessManager = $vim.serviceContent.guestOperationsManager.processManager unless $guestProcessManager
 
   pid = $guestProcessManager.StartProgramInGuest(:vm => vm, :auth => guestauth, :spec => VIM::GuestProgramSpec.new(:programPath => path, :arguments => args))
@@ -108,3 +109,38 @@ def copy_file_from_vm(vm, guestauth, src_path, dst_path)
   raise "#{dst_path} is not the right size. expected #{fileTransferInformation.size}, is #{File.stat(dst_path).size}" unless File.stat(dst_path).size == fileTransferInformation.size
 end
 
+def resize_disk(vm, size_in_bytes, busNumber, unitNumber)
+  controller_type = RbVmomi::VIM::VirtualSCSIController
+
+  controller = vm.config.hardware.device.grep(controller_type).find { |x| x.busNumber == busNumber }
+
+  raise "Controller with type VirtualSCSIController and bus #{busNumber} was not found" unless controller
+
+  child_keys = controller.device
+  child_disks = vm.disks.select { |x| child_keys.include?(x.key) }
+  disk = child_disks.find { |x| x.unitNumber == unitNumber }
+
+  raise "Disk with type VirtualSCSIController, bus #{busNumber}, unit #{unitNumber} was not found" unless disk
+
+  disk.capacityInKB = (size_in_bytes / 1024).to_i
+
+  dev = { 
+    :operation => :edit,
+    :device => disk
+  }
+
+  spec = {
+    :deviceChange => [ RbVmomi::VIM.VirtualDeviceConfigSpec(dev) ]
+  }
+
+  vm.ReconfigVM_Task( :spec => RbVmomi::VIM.VirtualMachineConfigSpec(spec) ).wait_for_completion
+end
+
+def resize_memory(vm, size_mb)
+  puts "resizing memory to #{size_mb}"
+  vm.ReconfigVM_Task( :spec => RbVmomi::VIM.VirtualMachineConfigSpec({ :memoryMB => size_mb.to_i }) ).wait_for_completion
+end
+
+def resize_cpus(vm, num_cpus)
+  vm.ReconfigVM_Task( :spec => RbVmomi::VIM.VirtualMachineConfigSpec({ :numCPUs => num_cpus.to_i }) ).wait_for_completion
+end

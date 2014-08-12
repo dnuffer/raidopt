@@ -3,8 +3,21 @@ require 'rbvmomi'
 require './vm_utils'
 require 'highline/import'
 
-raise "Invalid args: template password" unless ARGV.size == 1
+raise "Invalid args: template 8|4x830|4x840 0|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct swap-size disk-size memory-size num-cpus scheduler block-size ext4-stride ext4-stripe-width ext4-journal-mode ext4-dir-index ext4-barrier ext4-atime ext4-diratime" unless ARGV.size == 20
 template = ARGV[0]
+swap_size = ARGV[7].to_f
+disk_size = ARGV[8].to_f
+memory_size = ARGV[9].to_i
+num_cpus = ARGV[10].to_i
+scheduler = ARGV[11]
+ext4_block_size = ARGV[12]
+ext4_stride = ARGV[13]
+ext4_stripe_width = ARGV[14]
+ext4_journal_mode = ARGV[15]
+ext4_dir_index = ARGV[16]
+ext4_barrier = ARGV[17]
+ext4_atime = ARGV[18]
+ext4_diratime = ARGV[19]
 
 password = 'temppassword'
 #password = ask("password?") {|q| q.echo = false}
@@ -55,6 +68,20 @@ else
   vm = target_vm
 end
 
+if swap_size > 0
+  puts "Resizing swap disk"
+  resize_disk(vm, swap_size * 1024 * 1024 * 1024, 0, 1)
+end
+
+puts "Resizing test disk"
+resize_disk(vm, disk_size * 1024 * 1024 * 1024, 0, 2)
+
+puts "Resizing memory"
+resize_memory(vm, memory_size)
+
+puts "Changing number of cpus"
+resize_cpus(vm, num_cpus)
+
 puts "Powering on vm"
 begin
   vm.PowerOnVM_Task.wait_for_completion 
@@ -69,20 +96,55 @@ puts "VM Powered on"
 guestauth = VIM::NamePasswordAuthentication(:interactiveSession => false,
           :username => 'dan', :password => 'password')
 
+rootauth = VIM::NamePasswordAuthentication(:interactiveSession => false,
+          :username => 'root', :password => 'password')
+
 puts "Waiting for VMware tools"
 wait_for_tools(vm, guestauth)
 puts "VMware tools available"
 
+puts "setting scheduler"
+run_program(vm, rootauth, "/bin/bash", "-c 'echo #{scheduler} > /sys/block/sdc/queue/scheduler'")
 
+puts "disabling swap"
+run_program(vm, rootauth, "/bin/bash", "-c 'swapoff /dev/sda5'")
 
+if swap_size > 0
+  puts "enabling test swap"
+  run_program(vm, rootauth, "/bin/bash", "-c 'mkswap /dev/sdb && swapon /dev/sdb'")
+end
+
+puts "partitioning test disk"
+run_program(vm, rootauth, "/bin/bash", "-c 'echo ,,L | sfdisk /dev/sdc'")
+
+puts "formatting test disk"
+run_program(vm, rootauth, "/bin/bash", "-c 'mkfs.ext4 -b #{ext4_block_size} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width} /dev/sdc1'")
+
+puts "setting options on test disk filesystem"
+run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O has_journal -o #{ext4_journal_mode} /dev/sdc1'")
+if ext4_dir_index == "dir_index"
+  run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O dir_index /dev/sdc1'")
+elsif ext4_dir_index == "no_dir_index"
+  run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O ^dir_index /dev/sdc1'")
+end
+
+puts "mounting test disk"
+mount_opts = "-o "
+if ext4_barrier == "barrier"
+  mount_opts += "barrier=1"
+elsif ext4_barrier == "no_barrier"
+  mount_opts += "barrier=0"
+end
+mount_opts += ",#{ext4_atime}"
+mount_opts += ",#{ext4_diratime}"
+run_program(vm, rootauth, "/bin/bash", "-c 'mkdir /new; mount #{mount_opts} /dev/sdc1 /new; cp -a /home/dan /new; mount --bind /new /home'")
 
 puts "running phoronix test suite"
 twelve_hours_in_secs = 12 * 60 * 60
-run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite; bash /home/dan/benchmark.sh pts/disk'", twelve_hours_in_secs)
+run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite; bash /home/dan/benchmark.sh pts/aio-stress'", twelve_hours_in_secs)
 puts "phoronix test suite complete"
 
-
-
+exit
 
 puts "copying back results"
 copy_file_from_vm(vm, guestauth, "/home/dan/.phoronix-test-suite/test-results/1/test-1.xml", "benchmark-results.xml")
