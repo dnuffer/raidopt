@@ -3,21 +3,59 @@ require 'rbvmomi'
 require './vm_utils'
 require 'highline/import'
 
-raise "Invalid args: template 8|4x830|4x840 0|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct swap-size disk-size memory-size num-cpus scheduler block-size ext4-stride ext4-stripe-width ext4-journal-mode ext4-dir-index ext4-barrier ext4-atime ext4-diratime" unless ARGV.size == 20
-template = ARGV[0]
-swap_size = ARGV[7].to_f
-disk_size = ARGV[8].to_f
-memory_size = ARGV[9].to_i
-num_cpus = ARGV[10].to_i
-scheduler = ARGV[11]
-ext4_block_size = ARGV[12]
-ext4_stride = ARGV[13]
-ext4_stripe_width = ARGV[14]
-ext4_journal_mode = ARGV[15]
-ext4_dir_index = ARGV[16]
-ext4_barrier = ARGV[17]
-ext4_atime = ARGV[18]
-ext4_diratime = ARGV[19]
+raise "Invalid args: template 8|4x830|4x840 0|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct swap-size disk-size memory-size num-cpus scheduler block-size ext4-stride ext4-stripe-width ext4-journal-mode ext4-barrier ext4-atime ext4-diratime ext4-64-bit ext4-dir-index ext4-dir-nlink, ext4-extent ext4-extra-isize ext-ext-attr ext4-filetype ext4-flex-bg ext4-flex-bg-num-groups ext4-huge-file ext4-sparse-super2 ext4-mmp ext4-resize-inode ext4-sparse-super ext4-inode-size ext4-inode-ratio ext4-num-backup-sb ext4-packed-meta-blocks ext4-acl ext4-inode-allocator ext4-user-xattr ext4-journal-commit-interval ext4-journal-checksum-async-commit ext4-inode-readahead ext4-delalloc ext4-max-batch-time ext4-min-batch-time ext4-journal-ioprio ext4-auto-da-alloc ext4-discard ext4-dioread-lock ext4-i-version" unless ARGV.size == 52
+template = ARGV.shift
+raid_disks = ARGV.shift
+raid_level = ARGV.shift
+raid_strip_size = ARGV.shift
+raid_read_ahead = ARGV.shift
+raid_write_cache = ARGV.shift
+raid_read_cache = ARGV.shift
+swap_size = ARGV.shift.to_f
+disk_size = ARGV.shift.to_f
+memory_size = ARGV.shift.to_i
+num_cpus = ARGV.shift.to_i
+scheduler = ARGV.shift
+ext4_block_size = ARGV.shift
+ext4_stride = ARGV.shift
+ext4_stripe_width = ARGV.shift
+ext4_journal_mode = ARGV.shift
+ext4_barrier = ARGV.shift
+ext4_atime = ARGV.shift
+ext4_diratime = ARGV.shift
+ext4_64bit = ARGV.shift
+ext4_dir_index = ARGV.shift
+ext4_dir_nlink = ARGV.shift
+ext4_extent = ARGV.shift
+ext4_extra_isize = ARGV.shift
+ext4_ext_attr = ARGV.shift
+ext4_filetype = ARGV.shift
+ext4_flex_bg = ARGV.shift
+ext4_flex_bg_num_groups = ARGV.shift
+ext4_huge_file = ARGV.shift
+ext4_sparse_super2 = ARGV.shift
+ext4_mmp = ARGV.shift
+ext4_resize_inode = ARGV.shift
+ext4_sparse_super = ARGV.shift
+ext4_uninit_bg = ARGV.shift
+ext4_inode_size = ARGV.shift
+ext4_inode_ratio = ARGV.shift
+ext4_num_backup_sb = ARGV.shift
+ext4_packed_meta_blocks = ARGV.shift
+ext4_acl = ARGV.shift
+ext4_inode_allocator = ARGV.shift
+ext4_user_xattr = ARGV.shift
+ext4_journal_commit_interval = ARGV.shift
+ext4_journal_checksum_async_commit = ARGV.shift
+ext4_inode_readahead = ARGV.shift
+ext4_delalloc = ARGV.shift
+ext4_max_batch_time = ARGV.shift
+ext4_min_batch_time = ARGV.shift
+ext4_journal_ioprio = ARGV.shift
+ext4_auto_da_alloc = ARGV.shift
+ext4_discard = ARGV.shift
+ext4_dioread_lock = ARGV.shift
+ext4_i_version = ARGV.shift
 
 password = 'temppassword'
 #password = ask("password?") {|q| q.echo = false}
@@ -118,15 +156,52 @@ puts "partitioning test disk"
 run_program(vm, rootauth, "/bin/bash", "-c 'echo ,,L | sfdisk /dev/sdc'")
 
 puts "formatting test disk"
-run_program(vm, rootauth, "/bin/bash", "-c 'mkfs.ext4 -b #{ext4_block_size} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width} /dev/sdc1'")
+ext4_options = [
+  ext4_dir_index, 
+  ext4_dir_nlink, 
+  ext4_extent, 
+  ext4_extra_isize, 
+  ext4_ext_attr,
+  ext4_filetype,
+  ext4_64bit,
+  ext4_flex_bg,
+  ext4_huge_file,
+  ext4_sparse_super2,
+  ext4_mmp,
+  ext4_resize_inode,
+  ext4_sparse_super,
+  ext4_uninit_bg
+].join(",").gsub("no_", "^")
 
-puts "setting options on test disk filesystem"
-run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O has_journal -o #{ext4_journal_mode} /dev/sdc1'")
-if ext4_dir_index == "dir_index"
-  run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O dir_index /dev/sdc1'")
-elsif ext4_dir_index == "no_dir_index"
-  run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O ^dir_index /dev/sdc1'")
+if ext4_flex_bg == "flex_bg"
+  ext4_more_options = " -G #{ext4_flex_bg_num_groups} "
 end
+
+ext4_more_extended_options = ""
+if ext4_sparse_super2 == "sparse_super2"
+  ext4_more_extended_options += ",num_backup_sb=#{ext4_num_backup_sb}"
+end
+
+if ext4_flex_bg == "flex_bg"
+  ext4_more_extended_options += ",packed_meta_blocks=#{ext4_packed_meta_blocks == "packed_meta_blocks" ? "1" : "0"}"
+end
+run_program(vm, rootauth, "/bin/bash", "-c 'mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1'")
+
+#puts "setting options on test disk filesystem"
+#run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O has_journal -o #{ext4_journal_mode} /dev/sdc1'")
+#set_tune2fs_var = lambda do |var, set_val|
+  #if var == set_val
+    #run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O #{set_val} /dev/sdc1'")
+  #elsif var == "no_#{set_val}"
+    #run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O ^#{set_val} /dev/sdc1'")
+  #end
+#end
+#set_tune2fs_var.call(ext4_dir_index, "dir_index")
+#set_tune2fs_var.call(ext4_dir_nlink, "dir_nlink")
+#set_tune2fs_var.call(ext4_extent, "extent")
+#set_tune2fs_var.call(ext4_extra_isize, "extra_isize")
+#set_tune2fs_var.call(ext4_filetype, "filetype")
+#TODO: move all these tune2fs options into the mkfs -O option
 
 puts "mounting test disk"
 mount_opts = "-o "
@@ -137,6 +212,26 @@ elsif ext4_barrier == "no_barrier"
 end
 mount_opts += ",#{ext4_atime}"
 mount_opts += ",#{ext4_diratime}"
+mount_opts += ",#{ext4_acl}"
+if ext4_inode_allocator != "unspecified"
+  mount_opts += ",#{ext4_inode_allocator}"
+end
+mount_opts += ",#{ext4_user_xattr}"
+mount_opts += ",commit=#{ext4_journal_commit_interval}"
+if ext4_journal_checksum_async_commit != "no_journal_checksum"
+  mount_opts += ",#{ext4_journal_checksum_async_commit}"
+end
+mount_opts += ",inode_readahead=#{ext4_inode_readahead}"
+mount_opts += ",#{ext4_delalloc}"
+mount_opts += ",max_batch_time=#{ext4_max_batch_time}"
+mount_opts += ",min_batch_time=#{ext4_min_batch_time}"
+mount_opts += ",journal_ioprio=#{ext4_journal_ioprio}"
+mount_opts += ",#{ext4_auto_da_alloc}"
+mount_opts += ",#{ext4_discard}"
+mount_opts += ",#{ext4_dioread_lock}"
+if ext4_i_version == "i_version"
+  mount_opts += ",#{ext4_i_version}"
+end
 run_program(vm, rootauth, "/bin/bash", "-c 'mkdir /new; mount #{mount_opts} /dev/sdc1 /new; cp -a /home/dan /new; mount --bind /new /home'")
 
 puts "running phoronix test suite"
