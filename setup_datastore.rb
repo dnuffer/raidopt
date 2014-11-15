@@ -13,19 +13,9 @@ def delete_array(host)
 end
 
 def create_array(host, disks, raid_level, strip_size, read_policy, write_policy, io_policy)
-  # enclosure # is 252
-  # 840 drives are 0-3
-  # 830 drives are 4-7
-  if disks == "8"
-    drive_numbers = "0-7"
-    num_drives = 8
-  elsif disks == "4x830"
-    drive_numbers = "4-7"
-    num_drives = 4
-  elsif disks == "4x840"
-    drive_numbers = "0-3"
-    num_drives = 4
-  end
+  enclosure = 252
+  num_drives = disks.to_i
+  drive_numbers = "0-#{num_drives - 1}"
 
   if read_policy == "normal"
     read_ahead = "nora"
@@ -79,7 +69,7 @@ end
 
 
 
-raise "Invalid args: 8|4x830|4x840 0|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct" unless ARGV.size == 6
+raise "Invalid args: 1-8 0|1|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct" unless ARGV.size == 6
 
 password = 'temppassword'
 #password = ask("password?") {|q| q.echo = false}

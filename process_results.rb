@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'xmlsimple'
 
-raise "Invalid args: file 8|4x830|4x840 0|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct" unless ARGV.size == 7
+raise "Invalid args: file 1-8 0|1|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct" unless ARGV.size == 7
 file = ARGV.shift
 
 xml_data = open(file, "r") { |f| f.read }
