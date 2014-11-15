@@ -70,7 +70,8 @@ def run_program(vm, guestauth, path, args="", limit=60)
 
   pid = $guestProcessManager.StartProgramInGuest(:vm => vm, :auth => guestauth, :spec => VIM::GuestProgramSpec.new(:programPath => path, :arguments => args))
   wait_for_process_exit(vm, guestauth, pid, limit)
-  return process_exit_code(vm, guestauth, pid)
+  exit_code = process_exit_code(vm, guestauth, pid)
+  raise "failed to run #{path} #{args}. exit_code: #{exit_code}" if exit_code != 0
 end
 
 def copy_files_to_vm(vm, guestauth, src_dir, dst_dir)
