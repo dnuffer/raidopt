@@ -41,6 +41,8 @@ ranked_benchmarks = function() {
                 mean_value = mean(value),
                 median_value = median(value))
 
+  # TODO: use the 3 sigma worst-case as the ranking, this accounts for the mean as well as punishing for a large variance
+
   #print(benchmark_medians)
 
   benchmarks = unique(benchmark_medians[,"benchmark"])

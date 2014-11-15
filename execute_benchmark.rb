@@ -47,7 +47,7 @@ ext4_inode_allocator = ARGV.shift
 ext4_user_xattr = ARGV.shift
 ext4_journal_commit_interval = ARGV.shift
 ext4_journal_checksum_async_commit = ARGV.shift
-ext4_inode_readahead = ARGV.shift
+#ext4_inode_readahead = ARGV.shift
 ext4_delalloc = ARGV.shift
 ext4_max_batch_time = ARGV.shift
 ext4_min_batch_time = ARGV.shift
@@ -56,6 +56,23 @@ ext4_auto_da_alloc = ARGV.shift
 ext4_discard = ARGV.shift
 ext4_dioread_lock = ARGV.shift
 ext4_i_version = ARGV.shift
+kernel_vm_dirty_ratio = ARGV.shift
+kernel_vm_dirty_background_ratio = ARGV.shift
+kernel_vm_swappiness = ARGV.shift
+kernel_read_ahead = ARGV.shift
+kernel_fs_read_ahead = ARGV.shift
+kernel_dev_ncq = ARGV.shift
+ext4_bh = ARGV.shift
+kernel_vm_vfs_cache_pressure = ARGV.shift
+kernel_vm_dirty_expire_centisecs = ARGV.shift
+kernel_vm_dirty_writeback_centisecs = ARGV.shift
+kernel_vm_extfrag_threshold = ARGV.shift
+kernel_vm_hugepages_treat_as_movable = ARGV.shift
+kernel_vm_laptop_mode = ARGV.shift
+kernel_vm_overcommit_memory = ARGV.shift
+kernel_vm_overcommit_ratio = ARGV.shift
+kernel_vm_percpu_pagelist_fraction = ARGV.shift
+kernel_vm_zone_reclaim_mode = ARGV.shift
 
 password = 'temppassword'
 #password = ask("password?") {|q| q.echo = false}
@@ -141,8 +158,31 @@ puts "Waiting for VMware tools"
 wait_for_tools(vm, guestauth)
 puts "VMware tools available"
 
+run = lambda {|cmd| run_program(vm, rootauth, "/bin/bash", "-c '#{cmd.gsub("'", "\\'")}'") }
+
 puts "setting scheduler"
 run_program(vm, rootauth, "/bin/bash", "-c 'echo #{scheduler} > /sys/block/sdc/queue/scheduler'")
+
+puts "setting kernel parameters"
+kernel_params = {
+  "vm.dirty_ratio" => kernel_vm_dirty_ratio,
+  "vm.dirty_background_ratio" => kernel_vm_dirty_background_ratio,
+  "vm.swappiness" => kernel_vm_swappiness,
+  "vm.vfs_cache_pressure" => kernel_vm_vfs_cache_pressure,
+  "vm.dirty_expire_centisecs" => kernel_vm_dirty_expire_centisecs,
+  "vm.dirty_writeback_centisecs" => kernel_vm_dirty_writeback_centisecs,
+  "vm.extfrag_threshold" => kernel_vm_extfrag_threshold,
+  "vm.hugepages_treat_as_movable" => kernel_vm_hugepages_treat_as_movable,
+  "vm.laptop_mode" => kernel_vm_laptop_mode,
+  "vm.overcommit_memory" => kernel_vm_overcommit_memory,
+  "vm.overcommit_ratio" => kernel_vm_overcommit_ratio,
+  "vm.percpu_pagelist_fraction" => kernel_vm_percpu_pagelist_fraction,
+  "vm.zone_reclaim_mode" => kernel_vm_zone_reclaim_mode,
+}
+
+kernel_params.each do |key, value|
+  run_program(vm, rootauth, "/bin/bash", "-c 'sysctl #{key}=#{value}'")
+end
 
 puts "disabling swap"
 run_program(vm, rootauth, "/bin/bash", "-c 'swapoff /dev/sda5'")
@@ -154,6 +194,13 @@ end
 
 puts "partitioning test disk"
 run_program(vm, rootauth, "/bin/bash", "-c 'echo ,,L | sfdisk /dev/sdc'")
+
+puts "setting readahead on test disk"
+run.call("blockdev --setra #{kernel_read_ahead} /dev/sdc")
+run.call("blockdev --setfra #{kernel_fs_read_ahead} /dev/sdc")
+
+puts "setting ncq on device"
+run.call("echo #{kernel_dev_ncq} > /sys/block/sdc/device/queue_depth")
 
 puts "formatting test disk"
 ext4_options = [
@@ -187,22 +234,6 @@ if ext4_flex_bg == "flex_bg"
 end
 run_program(vm, rootauth, "/bin/bash", "-c 'mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1'")
 
-#puts "setting options on test disk filesystem"
-#run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O has_journal -o #{ext4_journal_mode} /dev/sdc1'")
-#set_tune2fs_var = lambda do |var, set_val|
-  #if var == set_val
-    #run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O #{set_val} /dev/sdc1'")
-  #elsif var == "no_#{set_val}"
-    #run_program(vm, rootauth, "/bin/bash", "-c 'tune2fs -O ^#{set_val} /dev/sdc1'")
-  #end
-#end
-#set_tune2fs_var.call(ext4_dir_index, "dir_index")
-#set_tune2fs_var.call(ext4_dir_nlink, "dir_nlink")
-#set_tune2fs_var.call(ext4_extent, "extent")
-#set_tune2fs_var.call(ext4_extra_isize, "extra_isize")
-#set_tune2fs_var.call(ext4_filetype, "filetype")
-#TODO: move all these tune2fs options into the mkfs -O option
-
 puts "mounting test disk"
 mount_opts = "-o "
 if ext4_barrier == "barrier"
@@ -221,7 +252,7 @@ mount_opts += ",commit=#{ext4_journal_commit_interval}"
 if ext4_journal_checksum_async_commit != "no_journal_checksum"
   mount_opts += ",#{ext4_journal_checksum_async_commit}"
 end
-mount_opts += ",inode_readahead=#{ext4_inode_readahead}"
+#mount_opts += ",inode_readahead=#{ext4_inode_readahead}"
 mount_opts += ",#{ext4_delalloc}"
 mount_opts += ",max_batch_time=#{ext4_max_batch_time}"
 mount_opts += ",min_batch_time=#{ext4_min_batch_time}"
@@ -232,11 +263,12 @@ mount_opts += ",#{ext4_dioread_lock}"
 if ext4_i_version == "i_version"
   mount_opts += ",#{ext4_i_version}"
 end
-run_program(vm, rootauth, "/bin/bash", "-c 'mkdir /new; mount #{mount_opts} /dev/sdc1 /new; cp -a /home/dan /new; mount --bind /new /home'")
+mount_opts += ",#{ext4_bh}"
+run_program(vm, rootauth, "/bin/bash", "-c 'mkdir /new && mount #{mount_opts} /dev/sdc1 /new && cp -a /home/dan /new && mount --bind /new /home'")
 
 puts "running phoronix test suite"
 twelve_hours_in_secs = 12 * 60 * 60
-run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite; bash /home/dan/benchmark.sh pts/aio-stress'", twelve_hours_in_secs)
+run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite && bash /home/dan/benchmark.sh pts/aio-stress'", twelve_hours_in_secs)
 puts "phoronix test suite complete"
 
 exit
