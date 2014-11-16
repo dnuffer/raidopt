@@ -14,6 +14,8 @@ run_experiment = function(params) {
     } else {
       print(paste("rvm-exec 2.1@raidopt ruby ./run_experiment.rb", paste(lapply(params, as.character), collapse=" ")))
       status = system(paste("rvm-exec 2.1@raidopt ruby ./run_experiment.rb", paste(lapply(params, as.character), collapse=" ")))
+      system(paste('echo ', paste(c(params, status), collapse=","), '>>benchmark-success-failure.csv'))
+
       if (status != 0) {
         stop("failed to run experiment")
       }
@@ -53,6 +55,7 @@ experiment_has_been_run = function(params, benchmark_results) {
 run_all_pairs_experiments = function() {
 
   all_pairs_experiments = read.csv('experiments.csv', stringsAsFactors=F)
+  all_pairs_experiments = all_pairs_experiments[sample(nrow(all_pairs_experiments)),]
   #print(all_pairs_experiments)
   benchmark_results = get_benchmark_results()
 
