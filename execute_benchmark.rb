@@ -124,17 +124,17 @@ else
 end
 
 if swap_size > 0
-  puts "Resizing swap disk"
+  puts "Resizing swap disk to #{swap_size} GiB"
   resize_disk(vm, swap_size * 1024 * 1024 * 1024, 0, 1)
 end
 
-puts "Resizing test disk"
+puts "Resizing test disk to #{disk_size} GiB"
 resize_disk(vm, disk_size * 1024 * 1024 * 1024, 0, 2)
 
-puts "Resizing memory"
+puts "Resizing memory to #{memory_size} MiB"
 resize_memory(vm, memory_size)
 
-puts "Changing number of cpus"
+puts "Changing number of cpus to #{num_cpus}"
 resize_cpus(vm, num_cpus)
 
 puts "Powering on vm"
@@ -163,6 +163,15 @@ run = lambda {|cmd| run_program(vm, rootauth, "/bin/bash", "-c '#{cmd.gsub("'", 
 puts "setting scheduler"
 run_program(vm, rootauth, "/bin/bash", "-c 'echo #{scheduler} > /sys/block/sdc/queue/scheduler'")
 
+# Saw that disabling swap fails given some kernel parameter settings. Try and do it first.
+puts "disabling swap"
+run_program(vm, rootauth, "/bin/bash", "-c 'swapoff /dev/sda5'")
+
+if swap_size > 0
+  puts "enabling test swap"
+  run_program(vm, rootauth, "/bin/bash", "-c 'mkswap /dev/sdb && swapon /dev/sdb'")
+end
+
 puts "setting kernel parameters"
 kernel_params = {
   "vm.dirty_ratio" => kernel_vm_dirty_ratio,
@@ -182,14 +191,6 @@ kernel_params = {
 
 kernel_params.each do |key, value|
   run_program(vm, rootauth, "/bin/bash", "-c 'sysctl #{key}=#{value}'")
-end
-
-puts "disabling swap"
-run_program(vm, rootauth, "/bin/bash", "-c 'swapoff /dev/sda5'")
-
-if swap_size > 0
-  puts "enabling test swap"
-  run_program(vm, rootauth, "/bin/bash", "-c 'mkswap /dev/sdb && swapon /dev/sdb'")
 end
 
 puts "partitioning test disk"
@@ -232,7 +233,7 @@ end
 if ext4_flex_bg == "flex_bg"
   ext4_more_extended_options += ",packed_meta_blocks=#{ext4_packed_meta_blocks == "packed_meta_blocks" ? "1" : "0"}"
 end
-run_program(vm, rootauth, "/bin/bash", "-c 'mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1'")
+run_shell_capture_output(vm, rootauth, "mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1", 900)
 
 puts "mounting test disk"
 mount_opts = "-o "
@@ -264,18 +265,23 @@ if ext4_i_version == "i_version"
   mount_opts += ",#{ext4_i_version}"
 end
 mount_opts += ",#{ext4_bh}"
-run_program(vm, rootauth, "/bin/bash", "-c 'mkdir /new && mount #{mount_opts} /dev/sdc1 /new && cp -a /home/dan /new && mount --bind /new /home'")
+run_shell_capture_output(vm, rootauth, "mkdir /new && mount #{mount_opts} /dev/sdc1 /new && cp -a /home/dan /new && mount --bind /new /home")
+
+puts "removing previous test results"
+run_program(vm, guestauth, "/bin/bash", "-c 'rm -rf /home/dan/.phoronix-test-suite/test-results/*'")
 
 puts "running phoronix test suite"
 twelve_hours_in_secs = 12 * 60 * 60
-run_program(vm, guestauth, "/bin/bash", "-c 'cd /home/dan/phoronix-test-suite && bash /home/dan/benchmark.sh pts/aio-stress'", twelve_hours_in_secs)
+run_shell_capture_output(vm, guestauth, "cd /home/dan/phoronix-test-suite && RUN_TESTS_IN_RANDOM_ORDER=yes bash /home/dan/benchmark.sh pts/aio-stress", twelve_hours_in_secs)
 puts "phoronix test suite complete"
 
-exit
-
 puts "copying back results"
+FileUtils.rm_f %w(benchmark-results.xml)
 copy_file_from_vm(vm, guestauth, "/home/dan/.phoronix-test-suite/test-results/1/test-1.xml", "benchmark-results.xml")
 puts "finished copying back results"
+
+# TODO: TEMP DEBUG
+exit
 
 puts "Powering vm off"
 vm.PowerOffVM_Task.wait_for_completion rescue nil

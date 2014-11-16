@@ -1,3 +1,4 @@
+require 'fileutils'
 
 VIM = RbVmomi::VIM
 
@@ -74,6 +75,24 @@ def run_program(vm, guestauth, path, args="", limit=60)
   raise "failed to run #{path} #{args}. exit_code: #{exit_code}" if exit_code != 0
 end
 
+def run_shell_capture_output(vm, guestauth, command, limit=60)
+  puts "run_shell_capture_output: #{command}"
+  $guestProcessManager = $vim.serviceContent.guestOperationsManager.processManager unless $guestProcessManager
+
+  tmp_out_fname = "/tmp/vm_utils_run_out_#{Random.rand}"
+  tmp_err_fname = "/tmp/vm_utils_run_err_#{Random.rand}"
+  pid = $guestProcessManager.StartProgramInGuest(:vm => vm, :auth => guestauth, :spec => VIM::GuestProgramSpec.new(:programPath => "/bin/sh", :arguments => "-c '#{command.gsub("'", %q(\\\'))} > #{tmp_out_fname} 2> #{tmp_err_fname}'"))
+  wait_for_process_exit(vm, guestauth, pid, limit)
+  exit_code = process_exit_code(vm, guestauth, pid)
+  copy_file_from_vm(vm, guestauth, tmp_out_fname, tmp_out_fname)
+  copy_file_from_vm(vm, guestauth, tmp_err_fname, tmp_err_fname)
+  proc_out = open(tmp_out_fname) { |f| f.read }
+  proc_err = open(tmp_err_fname) { |f| f.read }
+  FileUtils.rm_f([tmp_out_fname, tmp_err_fname])
+  raise "failed to run #{path} #{args}. exit_code: #{exit_code}. stdout:\n#{proc_out}\nstderr:\n#{proc_err}" if exit_code != 0
+  return [proc_out, proc_err]
+end
+
 def copy_files_to_vm(vm, guestauth, src_dir, dst_dir)
   Find.find(src_dir) do |path|
     if path == '.'
@@ -101,11 +120,13 @@ def copy_file_to_vm(vm, guestauth, src_path, dst_path)
 end
 
 def copy_file_from_vm(vm, guestauth, src_path, dst_path)
+  FileUtils.rm_f([dst_path])
   $guestFileManager = $vim.serviceContent.guestOperationsManager.fileManager unless $guestFileManager
 
   fileTransferInformation = $guestFileManager.InitiateFileTransferFromGuest(:vm => vm, :auth => guestauth, :guestFilePath => src_path)
   url = fileTransferInformation.url.gsub(/\/\*/, "/#{vm._connection.host}")
-  curlCmd = "curl --insecure --output #{dst_path} --fail '#{url}'"
+  curlCmd = "curl --insecure --fail '#{url}' > #{dst_path}"
+  puts "copying #{src_path} to #{dst_path} by #{curlCmd}"
   raise "Failed copying #{src_path} from vm" unless system(curlCmd)
   raise "#{dst_path} is not the right size. expected #{fileTransferInformation.size}, is #{File.stat(dst_path).size}" unless File.stat(dst_path).size == fileTransferInformation.size
 end
