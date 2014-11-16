@@ -1,15 +1,6 @@
 import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
-"""
-Demo of the basic functionality - just getting pairwise/n-wise combinations
-"""
-
-
-# sample parameters are is taken from 
-# http://www.stsc.hill.af.mil/consulting/sw_testing/improvement/cst.html
-
-
 parameters = [ 
     [ "8", "7", "6", "5", "4", "3", "2", "1" ]
     , [ "raid0", "raid1", "raid5", "raid6", "raid00", "raid10", "raid50", "raid60" ]

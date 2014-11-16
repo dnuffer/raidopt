@@ -69,7 +69,7 @@ end
 
 
 
-raise "Invalid args: 1-8 0|1|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct" unless ARGV.size == 6
+raise "Invalid args: 1-8 0|1|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct swap-size disk-size memory-size num-cpus scheduler block-size ext4-stride ext4-stripe-width ext4-journal-mode ext4-barrier ext4-atime ext4-diratime ext4-64-bit ext4-dir-index ext4-dir-nlink, ext4-extent ext4-extra-isize ext-ext-attr ext4-filetype ext4-flex-bg ext4-flex-bg-num-groups ext4-huge-file ext4-sparse-super2 ext4-mmp ext4-resize-inode ext4-sparse-super ext4-inode-size ext4-inode-ratio ext4-num-backup-sb ext4-packed-meta-blocks ext4-acl ext4-inode-allocator ext4-user-xattr ext4-journal-commit-interval ext4-journal-checksum-async-commit ext4-delalloc ext4-max-batch-time ext4-min-batch-time ext4-journal-ioprio ext4-auto-da-alloc ext4-discard ext4-dioread-lock ext4-i-version kernel-vm-dirty-ratio kernel-vm-dirty-background-ratio kernel-vm-swappiness kernel-read-ahead kernel-fs-read-ahead kernel-dev-ncq ext4-bh kernel-vm-vfs-cache-pressure kernel-vm-dirty-expire-centisecs kernel-vm-dirty-writeback-centisecs kernel-vm-extfrag-threshold kernel-vm-hugepages-treat-as-movable kernel-vm-laptop-mode kernel-vm-overcommit-memory kernel-vm-overcommit-ratio kernel-vm-percpu-pagelist-fraction kernel-vm-zone-reclaim-mode" unless ARGV.size == 67
 
 password = 'temppassword'
 #password = ask("password?") {|q| q.echo = false}
@@ -99,10 +99,10 @@ end
 
 
 begin
-  create_array(black_host, *ARGV)
+  create_array(black_host, *ARGV[0..5])
 rescue
   delete_array(black_host)
-  create_array(black_host, *ARGV)
+  create_array(black_host, *ARGV[0..5])
 end
 
 puts "Marking new array as SSD in esx"
