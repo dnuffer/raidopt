@@ -89,7 +89,7 @@ def run_shell_capture_output(vm, guestauth, command, limit=60)
   proc_out = open(tmp_out_fname) { |f| f.read }
   proc_err = open(tmp_err_fname) { |f| f.read }
   FileUtils.rm_f([tmp_out_fname, tmp_err_fname])
-  raise "failed to run #{path} #{args}. exit_code: #{exit_code}. stdout:\n#{proc_out}\nstderr:\n#{proc_err}" if exit_code != 0
+  raise "failed to run #{command}. exit_code: #{exit_code}. stdout:\n#{proc_out}\nstderr:\n#{proc_err}" if exit_code != 0
   return [proc_out, proc_err]
 end
 

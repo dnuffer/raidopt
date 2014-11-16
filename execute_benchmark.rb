@@ -233,7 +233,8 @@ end
 if ext4_flex_bg == "flex_bg"
   ext4_more_extended_options += ",packed_meta_blocks=#{ext4_packed_meta_blocks == "packed_meta_blocks" ? "1" : "0"}"
 end
-run_shell_capture_output(vm, rootauth, "mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1", 900)
+one_hour_in_secs = 1 * 60 * 60
+run_shell_capture_output(vm, rootauth, "mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1", one_hour_in_secs)
 
 puts "mounting test disk"
 mount_opts = "-o "
