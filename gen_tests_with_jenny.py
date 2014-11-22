@@ -2,84 +2,121 @@ import subprocess
 import re
 
 parameters = [ 
-    [ "8", "7", "6", "5", "4", "3", "2", "1" ] # 0
-    , [ "raid0", "raid1", "raid5", "raid6", "raid00", "raid10", "raid50", "raid60" ] # 1
-    , [ "64", "128", "256", "512", "1024" ] # 2
-    , [ "normal", "ahead" ] # 3
-    , [ "write-back", "write-thru" ] # 4
-    , [ "cached", "direct" ] # 5
+    ["disks" , [ "8", "7", "6", "5", "4", "3", "2", "1" ] ] # 0
+    , [ "raid" , [ "raid0", "raid1", "raid5", "raid6", "raid00", "raid10", "raid50", "raid60" ] ] # 1
+    , [ "strip-size", [ "64", "128", "256", "512", "1024" ] ] # 2
+    , [ "read-policy", [ "normal", "ahead" ] ] # 3
+    , [ "write-policy", [ "write-back", "write-thru" ] ] # 4
+    , [ "io-policy", [ "cached", "direct" ] ] # 5
     #, [ "ext4", "xfs", "btrfs" ] # fs
     #, [ "ubuntu14.04", "centos7", "debian7.5", "opensuse13.1", "fedora20" ] # OS
-    , [ "0", ".125", ".5", "2", "4", "8", "16", "32", "64", "128" ] # 6 swap (GB)
-    , [ "8", "16", "32", "64", "128", "256", "512", "1024", "2048", "3072" ] # 7 HD size (GB)
-    , [ "1024", "2048", "3072", "4096", "8192", "16384" ] # 8 RAM
-    , [ "1", "2", "3", "4", "5", "6", "7", "8" ] # 9 CPUs
-    , [ "deadline", "noop", "cfq" ] # 10 disk scheduler - https://wiki.archlinux.org/index.php/Solid_State_Drives#I.2FO_Scheduler
+    , [ "swap-size", [ "0", ".125", ".5", "2", "4", "8", "16", "32", "64", "128" ] ] # 6 swap (GB)
+    , [ "disk-size", [ "8", "16", "32", "64", "128", "256", "512", "1024", "2048", "3072" ] ] # 7 HD size (GB)
+    , [ "memory-size", [ "1024", "2048", "3072", "4096", "8192", "16384" ] ] # 8 RAM
+    , [ "num-cpus", [ "1", "2", "3", "4", "5", "6", "7", "8" ] ] # 9 CPUs
+    , [ "scheduler", [ "deadline", "noop", "cfq" ] ] # 10 disk scheduler - https://wiki.archlinux.org/index.php/Solid_State_Drives#I.2FO_Scheduler
     # http://erikugel.wordpress.com/2011/04/14/the-quest-for-the-fastest-linux-filesystem/
-    , [ "1024", "2048", "4096" ] # 11 fs block size
-    , [ "1", "2", "4", "8", "16", "32", "64", "128", "256", "512", "1024" ] # 12 fs stride (ext4)
-    , [ "8", "16", "32", "64", "128", "256", "512", "1024" ] # 13 fs stripe width (ext4) "recommended" lowest is 16 because smallest stripe/largest block size = 64/4
+    , [ "block-size", [ "1024", "2048", "4096" ] ] # 11 fs block size
+    , [ "ext4-stride", [ "1", "2", "4", "8", "16", "32", "64", "128", "256", "512", "1024" ] ] # 12 fs stride (ext4)
+    , [ "ext4-stripe-width", [ "8", "16", "32", "64", "128", "256", "512", "1024" ] ] # 13 fs stripe width (ext4) "recommended" lowest is 16 because smallest stripe/largest block size = 64/4
     # sunit/swidth (xfs)
-    , [ "journal_data", "journal_data_ordered", "journal_data_writeback" ] # 14 journal mode
-    , [ "barrier", "no_barrier" ] # 15 barrier=0
+    , [ "ext4-journal-mode", [ "journal_data", "journal_data_ordered", "journal_data_writeback" ] ] # 14 journal mode
+    , [ "ext4-barrier", [ "barrier", "no_barrier" ] ] # 15 barrier=0
     # partition alignment
-    , [ "noatime", "strictatime", "relatime" ] # 16 noatime/strictatime/relatime
-    , [ "nodiratime", "diratime" ] # 17 nodiratime
-    , [ "64bit", "no_64bit" ] # 18
-    , [ "dir_index", "no_dir_index" ] # 19 directory indexing
-    , [ "dir_nlink", "no_dir_nlink" ] # 20
-    , [ "extent", "no_extent" ] # 21
-    , [ "extra_isize", "no_extra_isize" ] # 22
-    , [ "ext_attr", "no_ext_attr" ] # 23
-    , [ "filetype", "no_filetype" ] # 24
-    , [ "flex_bg", "no_flex_bg" ] # 25
-    , [ "2", "4", "8", "16", "32", "64", "128", "256", "512" ] # 26 Number of groups used for flex_bg
+    , [ "ext4-atime", [ "noatime", "strictatime", "relatime" ] ] # 16 noatime/strictatime/relatime
+    , [ "ext4-diratime", [ "nodiratime", "diratime" ] ] # 17 nodiratime
+    , [ "ext4-64-bit", [ "64bit", "no_64bit" ] ] # 18
+    , [ "ext4-dir-index", [ "dir_index", "no_dir_index" ] ] # 19 directory indexing
+    , [ "ext4-dir-nlink", [ "dir_nlink", "no_dir_nlink" ] ] # 20
+    , [ "ext4-extent", [ "extent", "no_extent" ] ] # 21
+    , [ "ext4-extra-isize", [ "extra_isize", "no_extra_isize" ] ] # 22
+    , [ "ext4-ext-attr", [ "ext_attr", "no_ext_attr" ] ] # 23
+    , [ "ext4-filetype", [ "filetype", "no_filetype" ] ] # 24
+    , [ "ext4-flex-bg", [ "flex_bg", "no_flex_bg" ] ] # 25
+    , [ "ext4-flex-bg-num-groups", [ "2", "4", "8", "16", "32", "64", "128", "256", "512" ] ] # 26 Number of groups used for flex_bg
     #, [ "has_journal", "no_has_journal" ]
-    , [ "huge_file", "no_huge_file" ] # 27
-    , [ "sparse_super2", "no_sparse_super2" ] # 28
-    , [ "mmp", "no_mmp" ] # 29
+    , [ "ext4-huge-file", [ "huge_file", "no_huge_file" ] ] # 27
+    , [ "ext4-sparse-super2", [ "sparse_super2", "no_sparse_super2" ] ] # 28
+    , [ "ext4-mmp", [ "mmp", "no_mmp" ] ] # 29
     # don't test quota, it seems to be buggy
     # , [ "quota", "no_quota" ]
     # , [ "both", "usr", "grp" ] # extended option: quota type, only applicable if quota is enabled
-    , [ "resize_inode", "no_resize_inode" ] # 30
-    , [ "sparse_super", "no_sparse_super" ] # 31
-    , [ "uninit_bg", "no_uninit_bg" ] # 32
-    , [ "128", "256", "512", "1024", "2048", "4096" ] # 33, inode_size
-    , [ "16384", "65536", "262144", "1048576", "4194304", "16777216" ] # 34 inode_ratio
-    , [ "0", "1", "2" ] # 35 extended option: num_backup_sb
-    , [ "packed_meta_blocks", "no_packed_meta_blocks" ] # 36 extended option: packed_meta_blocks (only applicable if flex_bg option is enabled)
-    , [ "acl", "noacl" ] # 37 mount option: acl
-    , [ "oldalloc", "orlov", "unspecified" ] # 38
-    , [ "user_xattr", "nouser_xattr" ] # 39
-    , [ "1", "2", "3", "5", "10", "20", "40", "80" ] # 40 journal commit interval
-    , [ "no_journal_checksum", "journal_checksum", "journal_async_commit" ] # 41
+    , [ "ext4-resize-inode", [ "resize_inode", "no_resize_inode" ] ] # 30
+    , [ "ext4-sparse-super", [ "sparse_super", "no_sparse_super" ] ] # 31
+    , [ "ext4-uninit-bg", [ "uninit_bg", "no_uninit_bg" ] ] # 32
+    , [ "ext4-inode-size", [ "128", "256", "512", "1024", "2048", "4096" ] ] # 33, inode_size
+    , [ "ext4-inode-ratio", [ "16384", "65536", "262144", "1048576", "4194304", "16777216" ] ] # 34 inode_ratio
+    , [ "ext4-num-backup-sb", [ "0", "1", "2" ] ] # 35 extended option: num_backup_sb
+    , [ "ext4-packed-meta-blocks", [ "packed_meta_blocks", "no_packed_meta_blocks" ] ] # 36 extended option: packed_meta_blocks (only applicable if flex_bg option is enabled)
+    , [ "ext4-acl", [ "acl", "noacl" ] ] # 37 mount option: acl
+    , [ "ext4-inode-allocator", [ "oldalloc", "orlov", "unspecified" ] ] # 38
+    , [ "ext4-user-xattr", [ "user_xattr", "nouser_xattr" ] ] # 39
+    , [ "ext4-journal-commit-interval", [ "1", "2", "3", "5", "10", "20", "40", "80" ] ] # 40 journal commit interval
+    , [ "ext4-journal-checksum-async-commit", [ "no_journal_checksum", "journal_checksum", "journal_async_commit" ] ] # 41
     #, [ "0", "4", "8", "16", "32", "64", "128", "512" ] # inode_readahead (default 32) - not functional on 14.04
-    , [ "nodelalloc", "delalloc" ] # 42 nodealloc - http://www.phoronix.com/scan.php?page=article&item=ext4_linux35_tuning&num=1
-    , [ "0", "1000", "1900", "3800", "7500", "15000", "30000", "60000", "120000", "240000" ] # 43 max_batch_time
-    , [ "0", "1000", "1900", "3800", "7500", "15000", "30000", "60000", "120000", "240000" ] # 44 min_batch_time
-    , [ "0", "1", "2", "3", "4", "5", "6", "7" ] # 45 journal_ioprio
-    , [ "auto_da_alloc", "noauto_da_alloc" ] # 46
-    , [ "discard", "nodiscard" ] # 47
-    , [ "dioread_lock", "dioread_nolock" ] # 48
-    , [ "i_version", "noi_version" ] # 49
-    , [ "1", "2", "3", "4", "5", "7", "10", "15", "20", "30" ] # 50 vm_dirty_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
-    , [ "1", "2", "3", "4", "5", "7", "10", "15", "20", "30" ] # 51 vm_dirty_background_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
-    , [ "0", "1", "3", "10", "30", "50", "80", "90", "95", "99" ] # 52 vm_swappiness
-    , [ "0", "8", "24", "128", "512", "2048", "8192", "32768", "65536", "131072" ] # 53 read ahead - https://raid.wiki.kernel.org/index.php/Performance#RAID-5 must be a multiple of 8
-    , [ "0", "8", "24", "128", "512", "2048", "8192", "32768", "65536", "131072" ] # 54 filesystem read ahead - https://raid.wiki.kernel.org/index.php/Performance#RAID-5 must be a multiple of 8
-    , [ "1", "2", "4", "8", "12", "16", "20", "24", "28", "32" ] # 55 ncq - https://raid.wiki.kernel.org/index.php/Performance#RAID-5 32 is max on my system
-    , [ "bh", "nobh" ] # 56 http://blog.loxal.net/2008/01/tuning-ext3-for-performance-without.html
-    , [ "1", "3", "10", "33", "100", "333", "1000" ] # 57 vm.vfs_cache_pressure
-    , [ "100", "300", "1000", "3000", "10000", "30000", "100000" ] # 58 vm.dirty_expire_centisecs (3000 default)
-    , [ "0", "30", "125", "250", "500", "1000", "2000", "4000", "10000", "30000", "100000" ] # 59 vm.dirty_writeback_centisecs (default 500, 0 disables)
-    , [ "-1", "0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000" ] # 60 vm.extfrag_threshold
-    , [ "0", "1" ] # 61 vm.hugepages_treat_as_movable
-    , [ "0", "1", "3", "10", "33", "100", "333", "1000" ] # 62 vm.laptop_mode
-    , [ "0", "1", "2" ] # 63 vm.overcommit_memory
-    , [ "0", "1", "2", "4", "8", "16", "32", "64", "128" ] # 64 vm.overcommit_ratio
-    , [ "0", "8", "16", "32", "64", "128" ] # 65 vm.percpu_pagelist_fraction
-    , [ "0", "1", "2", "3", "4", "5", "6", "7" ] # 66 vm.zone_reclaim_mode
+    , [ "ext4-delalloc", [ "nodelalloc", "delalloc" ] ] # 42 nodealloc - http://www.phoronix.com/scan.php?page=article&item=ext4_linux35_tuning&num=1
+    , [ "ext4-max-batch-time", [ "0", "1000", "1900", "3800", "7500", "15000", "30000", "60000", "120000", "240000" ] ] # 43 max_batch_time
+    , [ "ext4-min-batch-time", [ "0", "1000", "1900", "3800", "7500", "15000", "30000", "60000", "120000", "240000" ] ] # 44 min_batch_time
+    , [ "ext4-journal-ioprio", [ "0", "1", "2", "3", "4", "5", "6", "7" ] ] # 45 journal_ioprio
+    , [ "ext4-auto-da-alloc", [ "auto_da_alloc", "noauto_da_alloc" ] ] # 46
+    , [ "ext4-discard", [ "discard", "nodiscard" ] ] # 47
+    , [ "ext4-dioread-lock", [ "dioread_lock", "dioread_nolock" ] ] # 48
+    , [ "ext4-i-version", [ "i_version", "noi_version" ] ] # 49
+    , [ "kernel-vm-dirty-ratio", [ "1", "2", "3", "4", "5", "7", "10", "15", "20", "30" ] ] # 50 vm_dirty_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
+    , [ "kernel-vm-dirty-background-ratio", [ "1", "2", "3", "4", "5", "7", "10", "15", "20", "30" ] ] # 51 vm_dirty_background_ratio - https://wiki.archlinux.org/index.php/Sysctl#Virtual_memory
+    , [ "kernel-vm-swappiness", [ "0", "1", "3", "10", "30", "50", "80", "90", "95", "99" ] ] # 52 vm_swappiness
+    , [ "kernel-read-ahead", [ "0", "8", "24", "128", "512", "2048", "8192", "32768", "65536", "131072" ] ] # 53 read ahead - https://raid.wiki.kernel.org/index.php/Performance#RAID-5 must be a multiple of 8
+    , [ "kernel-fs-read-ahead", [ "0", "8", "24", "128", "512", "2048", "8192", "32768", "65536", "131072" ] ] # 54 filesystem read ahead - https://raid.wiki.kernel.org/index.php/Performance#RAID-5 must be a multiple of 8
+    , [ "kernel-dev-ncq", [ "1", "2", "4", "8", "12", "16", "20", "24", "28", "32" ] ] # 55 ncq - https://raid.wiki.kernel.org/index.php/Performance#RAID-5 32 is max on my system
+    , [ "ext4-bh", [ "bh", "nobh" ] ] # 56 http://blog.loxal.net/2008/01/tuning-ext3-for-performance-without.html
+    , [ "kernel-vm-vfs-cache-pressure", [ "1", "3", "10", "33", "100", "333", "1000" ] ] # 57 vm.vfs_cache_pressure
+    , [ "kernel-vm-dirty-expire-centisecs", [ "100", "300", "1000", "3000", "10000", "30000", "100000" ] ] # 58 vm.dirty_expire_centisecs (3000 default)
+    , [ "kernel-vm-dirty-writeback-centisecs", [ "0", "30", "125", "250", "500", "1000", "2000", "4000", "10000", "30000", "100000" ] ] # 59 vm.dirty_writeback_centisecs (default 500, 0 disables)
+    , [ "kernel-vm-extfrag-threshold", [ "-1", "0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000" ] ] # 60 vm.extfrag_threshold
+    , [ "kernel-vm-hugepages-treas-as-movable", [ "0", "1" ] ] # 61 vm.hugepages_treat_as_movable
+    , [ "kernel-vm-laptop-mode", [ "0", "1", "3", "10", "33", "100", "333", "1000" ] ] # 62 vm.laptop_mode
+    , [ "kernel-vm-overcommit-memory", [ "0", "1", "2" ] ] # 63 vm.overcommit_memory
+    , [ "kernel-vm-overcommit-ratio", [ "32", "64", "128" ] ] # 64 vm.overcommit_ratio
+    , [ "kernel-vm-percpu-pagelist-fraction", [ "0", "8", "16", "32", "64", "128" ] ] # 65 vm.percpu_pagelist_fraction
+    , [ "kernel-vm-zone-reclaim-mode", [ "0", "1", "2", "3", "4", "5", "6", "7" ] ] # 66 vm.zone_reclaim_mode
 ]
+
+param_dict = dict(parameters)
+
+
+def cmd_line_for(param, value):
+  param_idx = [x[0] for x in parameters].index(param)
+  return str(param_idx + 1) + chr(ord('a') + parameters[param_idx][1].index(value))
+
+
+def create_two_var_cmd_line(param1, param2, test_f):
+  result = ""
+  for val1 in param_dict[param1]:
+    for val2 in param_dict[param2]:
+      if not test_f(val1, val2):
+        result += " -w" + cmd_line_for(param1, val1) + cmd_line_for(param2, val2)
+  return result
+
+def create_three_var_cmd_line(param1, param2, param3, test_f):
+  result = ""
+  for val1 in param_dict[param1]:
+    for val2 in param_dict[param2]:
+      for val3 in param_dict[param3]:
+        if not test_f(val1, val2, val3):
+          result += " -w" + cmd_line_for(param1, val1) + cmd_line_for(param2, val2) + cmd_line_for(param3, val3)
+  return result
+
+def create_four_var_cmd_line(param1, param2, param3, param4, test_f):
+  result = ""
+  for val1 in param_dict[param1]:
+    for val2 in param_dict[param2]:
+      for val3 in param_dict[param3]:
+        for val4 in param_dict[param4]:
+          if not test_f(val1, val2, val3, val4):
+            result += " -w" + cmd_line_for(param1, val1) + cmd_line_for(param2, val2) + cmd_line_for(param3, val3) + cmd_line_for(param4, val4)
+  return result
+
+invalid = ""
 
 def is_raid_valid_combination( disks, raid ):
   """
@@ -110,11 +147,8 @@ def is_raid_valid_combination( disks, raid ):
     return disks in ["6", "8"]
   return True
 
-invalid = ""
-for disks in parameters[0]:
-  for raid in parameters[1]:
-    if not is_raid_valid_combination(disks, raid):
-      invalid += " -w1" + chr(ord('a') + parameters[0].index(disks)) + "2" + chr(ord('a') + parameters[1].index(raid))
+
+invalid += create_two_var_cmd_line('disks', 'raid', is_raid_valid_combination)
 
 
 def is_dioread_valid_combination(block_size, dioread):
@@ -123,10 +157,7 @@ def is_dioread_valid_combination(block_size, dioread):
     return block_size == '4096'
   return True
 
-for block_size in parameters[11]:
-  for dioread in parameters[48]:
-    if not is_dioread_valid_combination(block_size, dioread):
-      invalid += " -w12" + chr(ord('a') + parameters[11].index(block_size)) + "49" + chr(ord('a') + parameters[48].index(dioread))
+invalid += create_two_var_cmd_line('block-size', 'ext4-dioread-lock', is_dioread_valid_combination)
 
 
 def is_extent_valid_combination(p64bit, extent):
@@ -134,43 +165,27 @@ def is_extent_valid_combination(p64bit, extent):
     return extent == "extent"
   return True
 
-for p64bit in parameters[18]:
-  for extent in parameters[21]:
-    if not is_extent_valid_combination(p64bit, extent):
-      invalid += " -w19" + chr(ord('a') + parameters[18].index(p64bit)) + "22" + chr(ord('a') + parameters[21].index(extent))
-
+invalid += create_two_var_cmd_line('ext4-64-bit', 'ext4-extent', is_extent_valid_combination)
 
 def is_inode_size_valid_combination(block_size, inode_size):
   return int(inode_size) <= int(block_size)
 
-for inode_size in parameters[33]:
-  for block_size in parameters[11]:
-    if not is_inode_size_valid_combination(block_size, inode_size):
-      invalid += " -w34" + chr(ord('a') + parameters[33].index(inode_size)) + "12" + chr(ord('a') + parameters[11].index(block_size))
+invalid += create_two_var_cmd_line('block-size', 'ext4-inode-size', is_inode_size_valid_combination)
 
 def is_resize_inode_valid_combination(resize_inode, sparse_super):
   return not (resize_inode == "resize_inode" and sparse_super == "no_sparse_super")
 
-for resize_inode in parameters[30]:
-  for sparse_super in parameters[31]:
-    if not is_resize_inode_valid_combination(resize_inode, sparse_super):
-      invalid += " -w31" + chr(ord('a') + parameters[30].index(resize_inode)) + "32" + chr(ord('a') + parameters[31].index(sparse_super))
+invalid += create_two_var_cmd_line('ext4-resize-inode', 'ext4-sparse-super', is_resize_inode_valid_combination)
 
 def is_stripe_width_valid_combination(stripe_width, stride):
   return (int(stripe_width) % int(stride)) == 0
 
-for stripe_width in parameters[13]:
-  for stride in parameters[12]:
-    if not is_stripe_width_valid_combination(stripe_width, stride):
-      invalid += " -w14" + chr(ord('a') + parameters[13].index(stripe_width)) + "13" + chr(ord('a') + parameters[12].index(stride))
+invalid += create_two_var_cmd_line('ext4-stripe-width', 'ext4-stride', is_stripe_width_valid_combination)
 
 def is_inode_ratio_valid_combination(block_size, inode_ratio):
   return int(block_size) < int(inode_ratio)
 
-for block_size in parameters[11]:
-  for inode_ratio in parameters[34]:
-    if not is_inode_ratio_valid_combination(block_size, inode_ratio):
-      invalid += " -w12" + chr(ord('a') + parameters[11].index(block_size)) + "35" + chr(ord('a') + parameters[34].index(inode_ratio))
+invalid += create_two_var_cmd_line('block-size', 'ext4-inode-ratio', is_inode_ratio_valid_combination)
 
 def is_disk_space_valid_combination(disks, raid_level, swap_size, disk_size):
   raw_size = 465.25 * float(disks)
@@ -190,14 +205,27 @@ def is_disk_space_valid_combination(disks, raid_level, swap_size, disk_size):
   usable_size *= 0.97
   return (float(swap_size) + float(disk_size)) <= usable_size
 
-for disks in parameters[0]:
-  for raid_level in parameters[1]:
-    for swap_size in parameters[6]:
-      for disk_size in parameters[7]:
-        if not is_disk_space_valid_combination(disks, raid_level, swap_size, disk_size):
-          invalid += " -w1" + chr(ord('a') + parameters[0].index(disks)) + "2" + chr(ord('a') + parameters[1].index(raid_level)) + "7" + chr(ord('a') + parameters[6].index(swap_size)) + "8" + chr(ord('a') + parameters[7].index(disk_size))
 
-cmd = "./jenny -n2 " + " ".join([str(len(param)) for param in  parameters]) + invalid
+invalid += create_four_var_cmd_line('disks', 'raid', 'swap-size', 'disk-size', is_disk_space_valid_combination)
+
+def is_inode_ratio_and_disk_size_valid_combination(inode_ratio, disk_size):
+  num_inodes = (long(disk_size) * 1024 * 1024 * 1024) / long(inode_ratio)
+  return num_inodes >= 16384 and num_inodes < 2**32
+
+invalid += create_two_var_cmd_line('ext4-inode-ratio', 'disk-size', is_inode_ratio_and_disk_size_valid_combination)
+
+def is_meta_blocks_flex_bg_sparse_super_valid_combination(packed_meta_blocks, flex_bg, sparse_super):
+  # doc for packed_meta_blocks: This option requires that the flex_bg file system feature to be enabled in order for it to have effect
+  if packed_meta_blocks == "packed_meta_blocks":
+    if flex_bg == "no_flex_bg":
+      return False
+  # This combination seems to cause a lot of issues
+  return not (packed_meta_blocks == "no_packed_meta_blocks" and flex_bg == "no_flex_bg" and sparse_super == "no_uninit_bg")
+
+invalid += create_three_var_cmd_line('ext4-packed-meta-blocks', 'ext4-flex-bg', 'ext4-sparse-super', is_meta_blocks_flex_bg_sparse_super_valid_combination)
+
+
+cmd = "./jenny -n2 " + " ".join([str(len(param[1])) for param in  parameters]) + invalid
 print "executing: " + cmd
 
 output = subprocess.check_output(cmd, shell=True)
@@ -209,10 +237,10 @@ parsed.remove([''])
 parsed.pop
 
 with open("experiments.csv", "w") as experiments_csv:
-  experiments_csv.write("disks,raid,strip-size,read-policy,write-policy,io-policy,swap-size,disk-size,memory-size,num-cpus,scheduler,block-size,ext4-stride,ext4-stripe-width,ext4-journal-mode,ext4-barrier,ext4-atime,ext4-diratime,ext4-64-bit,ext4-dir-index,ext4-dir-nlink,,ext4-extent,ext4-extra-isize,ext-ext-attr,ext4-filetype,ext4-flex-bg,ext4-flex-bg-num-groups,ext4-huge-file,ext4-sparse-super2,ext4-mmp,ext4-resize-inode,ext4-sparse-super,ext4-inode-size,ext4-inode-ratio,ext4-num-backup-sb,ext4-packed-meta-blocks,ext4-acl,ext4-inode-allocator,ext4-user-xattr,ext4-journal-commit-interval,ext4-journal-checksum-async-commit,ext4-delalloc,ext4-max-batch-time,ext4-min-batch-time,ext4-journal-ioprio,ext4-auto-da-alloc,ext4-discard,ext4-dioread-lock,ext4-i-version,kernel-vm-dirty-ratio,kernel-vm-dirty-background-ratio,kernel-vm-swappiness,kernel-read-ahead,kernel-fs-read-ahead,kernel-dev-ncq,ext4-bh,kernel-vm-vfs-cache-pressure,kernel-vm-dirty-expire-centisecs,kernel-vm-dirty-writeback-centisecs,kernel-vm-extfrag-threshold,kernel-vm-hugepages-treat-as-movable,kernel-vm-laptop-mode,kernel-vm-overcommit-memory,kernel-vm-overcommit-ratio,kernel-vm-percpu-pagelist-fraction,kernel-vm-zone-reclaim-mode\n")
+  experiments_csv.write(",".join([x[0] for x in parameters]) + "\n")
   for experiment in parsed:
     print experiment
     if experiment[0] == 'Could':
       print "!"
     else:
-      experiments_csv.write(",".join([parameters[int(re.search("[0-9]+", row_item).group(0)) - 1][ord(re.search("[a-z]+", row_item).group(0)) - ord('a')] for row_item in experiment]) + "\n")
+      experiments_csv.write(",".join([parameters[int(re.search("[0-9]+", row_item).group(0)) - 1][1][ord(re.search("[a-z]+", row_item).group(0)) - ord('a')] for row_item in experiment]) + "\n")

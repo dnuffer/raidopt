@@ -1,0 +1,8 @@
+benchmark.success.failure <- read.csv("~/raidopt/benchmark-success-failure.csv")
+benchmark.success.failure$status = factor(benchmark.success.failure$status)
+View(benchmark.success.failure)
+t.full=rpart(status~., data=benchmark.success.failure, method="class", control=rpart.control(cp=0, minsplit=1))
+#plot(t.full)
+#text(t.full, pretty=4)
+plot(t.full,branch = 0.5, uniform = T, compress = T,  main = "Full Tree: without pruning")
+text(t.full, use.n = T, all = T, cex = .6, pretty=4)

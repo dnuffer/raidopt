@@ -14,17 +14,44 @@ run_experiment = function(params) {
     } else {
       print(paste("rvm-exec 2.1@raidopt ruby ./run_experiment.rb", paste(lapply(params, as.character), collapse=" ")))
       status = system(paste("rvm-exec 2.1@raidopt ruby ./run_experiment.rb", paste(lapply(params, as.character), collapse=" ")))
+      if (!file.exists('benchmark-results-all.csv')) {
+        system(paste('echo "disks,raid,strip-size,read-policy,write-policy,io-policy,swap-size,disk-size,memory-size,num-cpus,scheduler,block-size,ext4-stride,ext4-stripe-width,ext4-journal-mode,ext4-barrier,ext4-atime,ext4-diratime,ext4-64-bit,ext4-dir-index,ext4-dir-nlink,ext4-extent,ext4-extra-isize,ext4-ext-attr,ext4-filetype,ext4-flex-bg,ext4-flex-bg-num-groups,ext4-huge-file,ext4-sparse-super2,ext4-mmp,ext4-resize-inode,ext4-sparse-super,ext4-uninit-bg,ext4-inode-size,ext4-inode-ratio,ext4-num-backup-sb,ext4-packed-meta-blocks,ext4-acl,ext4-inode-allocator,ext4-user-xattr,ext4-journal-commit-interval,ext4-journal-checksum-async-commit,ext4-delalloc,ext4-max-batch-time,ext4-min-batch-time,ext4-journal-ioprio,ext4-auto-da-alloc,ext4-discard,ext4-dioread-lock,ext4-i-version,kernel-vm-dirty-ratio,kernel-vm-dirty-background-ratio,kernel-vm-swappiness,kernel-read-ahead,kernel-fs-read-ahead,kernel-dev-ncq,ext4-bh,kernel-vm-vfs-cache-pressure,kernel-vm-dirty-expire-centisecs,kernel-vm-dirty-writeback-centisecs,kernel-vm-extfrag-threshold,kernel-vm-hugepages-treas-as-movable,kernel-vm-laptop-mode,kernel-vm-overcommit-memory,kernel-vm-overcommit-ratio,kernel-vm-percpu-pagelist-fraction,kernel-vm-zone-reclaim-mode,status" >>benchmark-success-failure.csv'))
+
+      }
       system(paste('echo ', paste(c(params, status), collapse=","), '>>benchmark-success-failure.csv'))
 
-      if (status != 0) {
-        stop("failed to run experiment")
-      }
+      #if (status != 0) {
+      #  stop("failed to run experiment")
+      #}
     }
 }
 
 get_benchmark_results = function() {
   if (file.exists('benchmark-results-all.csv')) {
     benchmark_results = read.csv('benchmark-results-all.csv', stringsAsFactors=T)
+  } else {
+    if (testing) {
+      # TESTING: This header will be added by the actual benchmark
+      system('echo "disks,raid,strip size,read policy,write policy,io policy,benchmark,value" >> benchmark-results-all.csv')
+    }
+    benchmark_results = data.frame(
+      disks=character(),
+      raid=character(),
+      strip.size=character(),
+      read.policy=character(),
+      write.policy=character(),
+      io.policy=character(),
+      benchmark=character(),
+      value=numeric(), 
+      stringsAsFactors=F)
+  }
+  #print(benchmark_results)
+  return (benchmark_results)
+}
+
+get_benchmark_success_failure = function() {
+  if (file.exists('benchmark-success-failure.csv')) {
+    benchmark_results = read.csv('benchmark-success-failure.csv', stringsAsFactors=T, header=T)
   } else {
     if (testing) {
       # TESTING: This header will be added by the actual benchmark
@@ -58,11 +85,14 @@ run_all_pairs_experiments = function() {
   all_pairs_experiments = all_pairs_experiments[sample(nrow(all_pairs_experiments)),]
   #print(all_pairs_experiments)
   benchmark_results = get_benchmark_results()
+  benchmark_success_failure = get_benchmark_success_failure()
 
   for (i in 1:nrow(all_pairs_experiments)) {
     params = all_pairs_experiments[i,]
     if (nrow(merge(params, benchmark_results)) == 0) {
-      run_experiment(params)
+      if (nrow(merge(params, benchmark_success_failure)) == 0) {
+        run_experiment(params)
+      }
     }
   }
 }
@@ -206,6 +236,8 @@ predict_optimal = function() {
 print("beginning all-pairs experiments")
 run_all_pairs_experiments()
 print("Complete all-pairs experiments")
+
+stop("ONLY ALL PAIRS FOR NOW")
 
 print("Beginning greedy search for experiments")
 while (T) {

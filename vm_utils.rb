@@ -76,12 +76,13 @@ def run_program(vm, guestauth, path, args="", limit=60)
 end
 
 def run_shell_capture_output(vm, guestauth, command, limit=60)
-  puts "run_shell_capture_output: #{command}"
   $guestProcessManager = $vim.serviceContent.guestOperationsManager.processManager unless $guestProcessManager
 
   tmp_out_fname = "/tmp/vm_utils_run_out_#{Random.rand}"
   tmp_err_fname = "/tmp/vm_utils_run_err_#{Random.rand}"
-  pid = $guestProcessManager.StartProgramInGuest(:vm => vm, :auth => guestauth, :spec => VIM::GuestProgramSpec.new(:programPath => "/bin/sh", :arguments => "-c '#{command.gsub("'", %q(\\\'))} > #{tmp_out_fname} 2> #{tmp_err_fname}'"))
+  args = "-c '(#{command.gsub("'", %q(\\\'))}) > #{tmp_out_fname} 2> #{tmp_err_fname}'"
+  puts "run_shell_capture_output: /bin/sh #{args}"
+  pid = $guestProcessManager.StartProgramInGuest(:vm => vm, :auth => guestauth, :spec => VIM::GuestProgramSpec.new(:programPath => "/bin/sh", :arguments => args))
   wait_for_process_exit(vm, guestauth, pid, limit)
   exit_code = process_exit_code(vm, guestauth, pid)
   copy_file_from_vm(vm, guestauth, tmp_out_fname, tmp_out_fname)
