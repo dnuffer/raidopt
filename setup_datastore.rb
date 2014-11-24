@@ -127,4 +127,10 @@ black_host.configManager.storageSystem.UpdateDiskPartitions(:devicePath => devic
 
 puts "Creating datastore on new device"
 options[0].spec.vmfs.volumeName = "local-black-ssd-raid-test"
-black_host.configManager.datastoreSystem.CreateVmfsDatastore(:spec => options[0].spec)
+begin
+  black_host.configManager.datastoreSystem.CreateVmfsDatastore(:spec => options[0].spec)
+rescue
+  # Wait a bit and try again
+  sleep 10
+  black_host.configManager.datastoreSystem.CreateVmfsDatastore(:spec => options[0].spec)
+end

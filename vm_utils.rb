@@ -2,6 +2,9 @@ require 'fileutils'
 
 VIM = RbVmomi::VIM
 
+class TimeoutException < StandardError
+end
+
 def make_temp_dir_on_guest(vm, guestauth, prefix="foo", suffix="bar")
   $guestFileManager = $vim.serviceContent.guestOperationsManager.fileManager unless $guestFileManager
   $guestFileManager.CreateTemporaryDirectoryInGuest(:vm => vm, :auth => guestauth, :prefix => prefix, :suffix => suffix)
@@ -61,7 +64,7 @@ def wait_for_process_exit(vm, guestauth, pid, limit=60)
     sleep(1)
   end
   if waitTime >= limit
-    raise "gave up waiting for process #{pid} to exit after #{limit} seconds"
+    raise TimeoutException, "gave up waiting for process #{pid} to exit after #{limit} seconds"
   end
 end
 

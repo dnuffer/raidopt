@@ -3,7 +3,11 @@ require 'rbvmomi'
 require './vm_utils'
 require 'highline/import'
 
-raise "Invalid args: template 1-8 0|1|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct swap-size disk-size memory-size num-cpus scheduler block-size ext4-stride ext4-stripe-width ext4-journal-mode ext4-barrier ext4-atime ext4-diratime ext4-64-bit ext4-dir-index ext4-dir-nlink, ext4-extent ext4-extra-isize ext-ext-attr ext4-filetype ext4-flex-bg ext4-flex-bg-num-groups ext4-huge-file ext4-sparse-super2 ext4-mmp ext4-resize-inode ext4-sparse-super ext4-uninit-bg ext4-inode-size ext4-inode-ratio ext4-num-backup-sb ext4-packed-meta-blocks ext4-acl ext4-inode-allocator ext4-user-xattr ext4-journal-commit-interval ext4-journal-checksum-async-commit ext4-delalloc ext4-max-batch-time ext4-min-batch-time ext4-journal-ioprio ext4-auto-da-alloc ext4-discard ext4-dioread-lock ext4-i-version kernel-vm-dirty-ratio kernel-vm-dirty-background-ratio kernel-vm-swappiness kernel-read-ahead kernel-fs-read-ahead kernel-dev-ncq ext4-bh kernel-vm-vfs-cache-pressure kernel-vm-dirty-expire-centisecs kernel-vm-dirty-writeback-centisecs kernel-vm-extfrag-threshold kernel-vm-hugepages-treat-as-movable kernel-vm-laptop-mode kernel-vm-overcommit-memory kernel-vm-overcommit-ratio kernel-vm-percpu-pagelist-fraction kernel-vm-zone-reclaim-mode" unless ARGV.size == 68
+if ARGV.size != 68
+  STDERR.puts "Invalid args: template 1-8 0|1|5|6|10|50|60 64|128|256|512|1024 normal|ahead write-back|write-thru cached|direct swap-size disk-size memory-size num-cpus scheduler block-size ext4-stride ext4-stripe-width ext4-journal-mode ext4-barrier ext4-atime ext4-diratime ext4-64-bit ext4-dir-index ext4-dir-nlink, ext4-extent ext4-extra-isize ext-ext-attr ext4-filetype ext4-flex-bg ext4-flex-bg-num-groups ext4-huge-file ext4-sparse-super2 ext4-mmp ext4-resize-inode ext4-sparse-super ext4-uninit-bg ext4-inode-size ext4-inode-ratio ext4-num-backup-sb ext4-packed-meta-blocks ext4-acl ext4-inode-allocator ext4-user-xattr ext4-journal-commit-interval ext4-journal-checksum-async-commit ext4-delalloc ext4-max-batch-time ext4-min-batch-time ext4-journal-ioprio ext4-auto-da-alloc ext4-discard ext4-dioread-lock ext4-i-version kernel-vm-dirty-ratio kernel-vm-dirty-background-ratio kernel-vm-swappiness kernel-read-ahead kernel-fs-read-ahead kernel-dev-ncq ext4-bh kernel-vm-vfs-cache-pressure kernel-vm-dirty-expire-centisecs kernel-vm-dirty-writeback-centisecs kernel-vm-extfrag-threshold kernel-vm-hugepages-treat-as-movable kernel-vm-laptop-mode kernel-vm-overcommit-memory kernel-vm-overcommit-ratio kernel-vm-percpu-pagelist-fraction kernel-vm-zone-reclaim-mode"
+  exit 100
+end
+
 template = ARGV.shift
 raid_disks = ARGV.shift
 raid_level = ARGV.shift
@@ -233,8 +237,17 @@ end
 if ext4_flex_bg == "flex_bg"
   ext4_more_extended_options += ",packed_meta_blocks=#{ext4_packed_meta_blocks == "packed_meta_blocks" ? "1" : "0"}"
 end
-one_hour_in_secs = 1 * 60 * 60
-run_shell_capture_output(vm, rootauth, "mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1", one_hour_in_secs)
+
+begin
+  one_hour_in_secs = 1 * 60 * 60
+  run_shell_capture_output(vm, rootauth, "mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1", one_hour_in_secs)
+rescue TimeoutException => e
+  STDERR.puts "Timed out running mkfs.ext4: #{e}"
+  exit 101
+rescue RuntimeError => e
+  STDERR.puts "Failed to run mkfs.ext4: #{e}"
+  exit 102
+end
 
 puts "mounting test disk"
 mount_opts = "-o "
@@ -266,7 +279,13 @@ if ext4_i_version == "i_version"
   mount_opts += ",#{ext4_i_version}"
 end
 mount_opts += ",#{ext4_bh}"
-run_shell_capture_output(vm, rootauth, "mkdir /new && mount #{mount_opts} /dev/sdc1 /new && cp -a /home/dan /new && mount --bind /new /home")
+
+begin
+  run_shell_capture_output(vm, rootauth, "mkdir /new && mount #{mount_opts} /dev/sdc1 /new && cp -a /home/dan /new && mount --bind /new /home")
+rescue RuntimeError => e
+  STDERR.puts "Failed: #{e}"
+  exit 103
+end
 
 puts "removing previous test results"
 run_program(vm, guestauth, "/bin/bash", "-c 'rm -rf /home/dan/.phoronix-test-suite/test-results/*'")
