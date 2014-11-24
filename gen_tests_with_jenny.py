@@ -214,16 +214,20 @@ def is_inode_ratio_and_disk_size_valid_combination(inode_ratio, disk_size):
 
 invalid += create_two_var_cmd_line('ext4-inode-ratio', 'disk-size', is_inode_ratio_and_disk_size_valid_combination)
 
-def is_meta_blocks_flex_bg_sparse_super_valid_combination(packed_meta_blocks, flex_bg, sparse_super):
+def is_packed_meta_blocks_flex_bg_valid_combination(packed_meta_blocks, flex_bg):
   # doc for packed_meta_blocks: This option requires that the flex_bg file system feature to be enabled in order for it to have effect
-  if packed_meta_blocks == "packed_meta_blocks":
-    if flex_bg == "no_flex_bg":
-      return False
-  # This combination seems to cause a lot of issues
-  return not (packed_meta_blocks == "no_packed_meta_blocks" and flex_bg == "no_flex_bg" and sparse_super == "no_uninit_bg")
+  if packed_meta_blocks == "packed_meta_blocks" and flex_bg == "no_flex_bg":
+    return False
+  return True
 
-invalid += create_three_var_cmd_line('ext4-packed-meta-blocks', 'ext4-flex-bg', 'ext4-sparse-super', is_meta_blocks_flex_bg_sparse_super_valid_combination)
+invalid += create_two_var_cmd_line('ext4-packed-meta-blocks', 'ext4-flex-bg', is_packed_meta_blocks_flex_bg_valid_combination)
 
+def is_packed_meta_blocks_uninit_bg_valid_combination(packed_meta_blocks, uninit_bg):
+  if packed_meta_blocks == "no_packed_meta_blocks" and uninit_bg == "no_uninit_bg":
+    return False
+  return True
+
+invalid += create_two_var_cmd_line('ext4-packed-meta-blocks', 'ext4-uninit-bg', is_packed_meta_blocks_uninit_bg_valid_combination)
 
 cmd = "./jenny -n2 " + " ".join([str(len(param[1])) for param in  parameters]) + invalid
 print "executing: " + cmd
