@@ -223,7 +223,7 @@ def is_packed_meta_blocks_flex_bg_valid_combination(packed_meta_blocks, flex_bg)
 invalid += create_two_var_cmd_line('ext4-packed-meta-blocks', 'ext4-flex-bg', is_packed_meta_blocks_flex_bg_valid_combination)
 
 def is_packed_meta_blocks_uninit_bg_valid_combination(packed_meta_blocks, uninit_bg):
-  if packed_meta_blocks == "no_packed_meta_blocks" and uninit_bg == "no_uninit_bg":
+  if packed_meta_blocks == "packed_meta_blocks" and uninit_bg == "uninit_bg":
     return False
   return True
 
