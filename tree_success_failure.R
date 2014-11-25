@@ -1,3 +1,4 @@
+library(rpart)
 benchmark.success.failure <- read.csv("~/raidopt/benchmark-success-failure.csv")
 benchmark.success.failure$status = factor(benchmark.success.failure$status)
 View(benchmark.success.failure)
