@@ -10,8 +10,11 @@ if ARGV.size != 67
 end
 
 if ! system "ruby setup_datastore.rb #{ARGV.join(' ')}"
-  STDERR.puts "failed to setup datastore: #{$?.exitstatus}"
-  exit $?.exitstatus
+  # Occasionally this will fail because of some vmware problem. Try twice.
+  if ! system "ruby setup_datastore.rb #{ARGV.join(' ')}"
+    STDERR.puts "failed to setup datastore: #{$?.exitstatus}"
+    exit $?.exitstatus
+  end
 end
 
 if ! system "ruby execute_benchmark.rb 'templates/Disk test Ubuntu 14.04 ext4' #{ARGV.join(' ')}"
