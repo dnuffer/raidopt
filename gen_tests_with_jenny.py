@@ -229,22 +229,38 @@ def is_packed_meta_blocks_uninit_bg_valid_combination(packed_meta_blocks, uninit
 
 invalid += create_two_var_cmd_line('ext4-packed-meta-blocks', 'ext4-uninit-bg', is_packed_meta_blocks_uninit_bg_valid_combination)
 
-cmd = "./jenny -n2 " + " ".join([str(len(param[1])) for param in  parameters]) + invalid
-print "executing: " + cmd
+# This combination causes invalid number of inode errors
+def is_block_size_disk_size_valid_combination(block_size, disk_size):
+  return not(int(block_size) == 1024 and int(disk_size) >= 1024)
 
-output = subprocess.check_output(cmd, shell=True)
+invalid += create_two_var_cmd_line('block-size', 'disk-size', is_block_size_disk_size_valid_combination)
 
-#print output
-parsed = [line.strip(" ").split(" ") for line in output.split("\n")]
-parsed.remove([''])
-#if parsed[-1] == ['']:
-parsed.pop
+def write_experiments_header():
+  with open("experiments.csv", "w") as experiments_csv:
+    experiments_csv.write(",".join([x[0] for x in parameters]) + "\n")
 
-with open("experiments.csv", "w") as experiments_csv:
-  experiments_csv.write(",".join([x[0] for x in parameters]) + "\n")
-  for experiment in parsed:
-    print experiment
-    if experiment[0] == 'Could':
-      print "!"
-    else:
-      experiments_csv.write(",".join([parameters[int(re.search("[0-9]+", row_item).group(0)) - 1][1][ord(re.search("[a-z]+", row_item).group(0)) - ord('a')] for row_item in experiment]) + "\n")
+def run_jenny(n_tuples):
+  cmd = "./jenny -n" + str(n_tuples) + " " + " ".join([str(len(param[1])) for param in  parameters]) + invalid
+  print "executing: " + cmd
+
+  output = subprocess.check_output(cmd, shell=True)
+
+  #print output
+  parsed = [line.strip(" ").split(" ") for line in output.split("\n")]
+  parsed.remove([''])
+  #if parsed[-1] == ['']:
+  parsed.pop
+
+  with open("experiments.csv", "a") as experiments_csv:
+    for experiment in parsed:
+      print experiment
+      if experiment[0] == 'Could':
+        print "!"
+      else:
+        experiments_csv.write(",".join([parameters[int(re.search("[0-9]+", row_item).group(0)) - 1][1][ord(re.search("[a-z]+", row_item).group(0)) - ord('a')] for row_item in experiment]) + "\n")
+
+write_experiments_header()
+run_jenny(1)
+run_jenny(2)
+# 3-tuples is too much
+#run_jenny(3)
