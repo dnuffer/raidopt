@@ -240,7 +240,7 @@ end
 
 begin
   one_hour_in_secs = 1 * 60 * 60
-  run_shell_capture_output(vm, rootauth, "mkfs.ext4 -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1", one_hour_in_secs)
+  run_shell_capture_output(vm, rootauth, "mkfs.ext4 -v -b #{ext4_block_size} -O #{ext4_options} -E stride=#{ext4_stride},stripe_width=#{ext4_stripe_width}#{ext4_more_extended_options} -I #{ext4_inode_size} -i #{ext4_inode_ratio} #{ext4_more_options} /dev/sdc1", one_hour_in_secs)
 rescue TimeoutException => e
   STDERR.puts "Timed out running mkfs.ext4: #{e}"
   exit 101
@@ -250,7 +250,7 @@ rescue RuntimeError => e
 end
 
 puts "mounting test disk"
-mount_opts = "-o "
+mount_opts = "-v -t ext4 -o "
 if ext4_barrier == "barrier"
   mount_opts += "barrier=1"
 elsif ext4_barrier == "no_barrier"
