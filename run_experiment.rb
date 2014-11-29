@@ -11,6 +11,7 @@ end
 
 if ! system "ruby setup_datastore.rb #{ARGV.join(' ')}"
   # Occasionally this will fail because of some vmware problem. Try twice.
+  sleep 60
   if ! system "ruby setup_datastore.rb #{ARGV.join(' ')}"
     STDERR.puts "failed to setup datastore: #{$?.exitstatus}"
     exit $?.exitstatus
