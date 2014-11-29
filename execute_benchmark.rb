@@ -292,7 +292,11 @@ run_program(vm, guestauth, "/bin/bash", "-c 'rm -rf /home/dan/.phoronix-test-sui
 
 puts "running phoronix test suite"
 twelve_hours_in_secs = 12 * 60 * 60
-run_shell_capture_output(vm, guestauth, "cd /home/dan/phoronix-test-suite && RUN_TESTS_IN_RANDOM_ORDER=yes bash /home/dan/benchmark.sh pts/aio-stress", twelve_hours_in_secs)
+
+#benchmark = "pts/aio-stress"
+#benchmark = "pts/linux-system" ???
+benchmark = "pts/disk"
+run_shell_capture_output(vm, guestauth, "cd /home/dan/phoronix-test-suite && RUN_TESTS_IN_RANDOM_ORDER=yes bash /home/dan/benchmark.sh #{benchmark}", twelve_hours_in_secs)
 puts "phoronix test suite complete"
 
 puts "copying back results"
