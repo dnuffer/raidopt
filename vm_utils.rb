@@ -59,7 +59,7 @@ end
 
 def wait_for_process_exit(vm, guestauth, pid, limit=60)
   waitTime = 0
-  while process_is_running(vm, guestauth, pid)
+  while process_is_running(vm, guestauth, pid) && waitTime < limit
     waitTime += 1
     sleep(1)
   end
@@ -85,6 +85,7 @@ def run_shell_capture_output(vm, guestauth, command, limit=60)
   tmp_err_fname = "/tmp/vm_utils_run_err_#{Random.rand}"
   args = "-c '(#{command.gsub("'", %q(\\\'))}) > #{tmp_out_fname} 2> #{tmp_err_fname}'"
   puts "run_shell_capture_output: /bin/sh #{args}"
+  STDOUT.flush
   pid = $guestProcessManager.StartProgramInGuest(:vm => vm, :auth => guestauth, :spec => VIM::GuestProgramSpec.new(:programPath => "/bin/sh", :arguments => args))
   wait_for_process_exit(vm, guestauth, pid, limit)
   exit_code = process_exit_code(vm, guestauth, pid)
