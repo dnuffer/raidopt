@@ -1,12 +1,12 @@
 library(rpart)
 library(caret)
-benchmark.success.failure <- read.csv("~/raidopt/benchmark-success-failure-7.csv")
-benchmark.success.failure <- rbind(benchmark.success.failure, read.csv("~/raidopt/benchmark-success-failure-8.csv"))
-benchmark.success.failure <- rbind(benchmark.success.failure, read.csv("~/raidopt/benchmark-success-failure-9.csv"))
-benchmark.success.failure = unique(benchmark.success.failure)
+benchmark.success.failure <- read.csv("~/raidopt/benchmark-success-failure.csv")
+#benchmark.success.failure <- rbind(benchmark.success.failure, read.csv("~/raidopt/benchmark-success-failure-8.csv"))
+#benchmark.success.failure <- rbind(benchmark.success.failure, read.csv("~/raidopt/benchmark-success-failure-9.csv"))
+#benchmark.success.failure = unique(benchmark.success.failure)
 #benchmark.success.failure$status = factor(benchmark.success.failure$status)
 #View(benchmark.success.failure)
-benchmark.success.failure$status = benchmark.success.failure$status == 101
+benchmark.success.failure$status = benchmark.success.failure$status == 103
 benchmark.success.failure$status = factor(benchmark.success.failure$status)
 t.full=rpart(status~., data=benchmark.success.failure, method="class", control=rpart.control(cp=0, minsplit=1))
 #t.train = train(status ~., data=benchmark.success.failure, method="rpart", trControl = trainControl(method="repeatedcv", number=10, repeats=10), metric="Kappa", tuneLength=30)
